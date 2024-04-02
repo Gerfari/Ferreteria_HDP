@@ -14,7 +14,7 @@ public class Conexion {
     private static final ResultSet rs = null;
     private static Statement sentencia = null;
     private static final PreparedStatement ps = null;
-    private static final String url = "jdbc:postgresql://localhost:5432/Ferreteria_HDP";
+    private static final String url = "jdbc:postgresql://localhost:5432/Ferreteria_HDP";//cambiar name
     private static final String usuario = "postgres";
     private static final String password = "root";
 
