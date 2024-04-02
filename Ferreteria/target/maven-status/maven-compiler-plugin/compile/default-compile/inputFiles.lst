@@ -5,10 +5,13 @@ C:\Users\herna\Documents\GitHub\Ferreteria_HDP\Ferreteria\src\main\java\com\ues\
 C:\Users\herna\Documents\GitHub\Ferreteria_HDP\Ferreteria\src\main\java\com\ues\models\dao\CategoriasDAO.java
 C:\Users\herna\Documents\GitHub\Ferreteria_HDP\Ferreteria\src\main\java\com\ues\models\Productos.java
 C:\Users\herna\Documents\GitHub\Ferreteria_HDP\Ferreteria\src\main\java\com\ues\models\Ventas.java
+C:\Users\herna\Documents\GitHub\Ferreteria_HDP\Ferreteria\src\main\java\com\ues\controllers\ControllerCompra.java
 C:\Users\herna\Documents\GitHub\Ferreteria_HDP\Ferreteria\src\main\java\com\ues\models\Empleados.java
 C:\Users\herna\Documents\GitHub\Ferreteria_HDP\Ferreteria\src\main\java\com\ues\models\Categorias.java
+C:\Users\herna\Documents\GitHub\Ferreteria_HDP\Ferreteria\src\main\java\com\ues\models\dao\CompraDAO.java
 C:\Users\herna\Documents\GitHub\Ferreteria_HDP\Ferreteria\src\main\java\com\ues\models\Roles.java
 C:\Users\herna\Documents\GitHub\Ferreteria_HDP\Ferreteria\src\main\java\com\ues\models\DetalleCompra.java
+C:\Users\herna\Documents\GitHub\Ferreteria_HDP\Ferreteria\src\main\java\com\ues\models\dtos\ComprasDTO.java
 C:\Users\herna\Documents\GitHub\Ferreteria_HDP\Ferreteria\src\main\java\com\ues\models\DetalleVenta.java
 C:\Users\herna\Documents\GitHub\Ferreteria_HDP\Ferreteria\src\main\java\com\ues\controllers\ControllerVenta.java
 C:\Users\herna\Documents\GitHub\Ferreteria_HDP\Ferreteria\src\main\java\com\ues\models\Conexion.java
