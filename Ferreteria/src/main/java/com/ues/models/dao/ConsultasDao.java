@@ -1,9 +1,8 @@
 
 package com.ues.models.dao;
 
-import com.ues.models.Cliente;
-import com.ues.utils.ClienteTotal;
-import com.ues.utils.ProductoCatExis;
+import com.ues.models.dtos.ClienteTotal;
+import com.ues.models.dtos.ProductoCatExis;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

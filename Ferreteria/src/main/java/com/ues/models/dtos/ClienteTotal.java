@@ -1,5 +1,5 @@
 
-package com.ues.utils;
+package com.ues.models.dtos;
 
 
 public class ClienteTotal {

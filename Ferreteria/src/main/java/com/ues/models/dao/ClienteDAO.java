@@ -1,7 +1,6 @@
 package com.ues.models.dao;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 import com.ues.models.Cliente;
 
 public class ClienteDAO {

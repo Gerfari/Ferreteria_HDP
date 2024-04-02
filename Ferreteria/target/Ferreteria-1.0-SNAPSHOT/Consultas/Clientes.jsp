@@ -112,7 +112,9 @@
                 </table>
             </div>
         </div>
-         <script src="Clientes_funciones.js"></script>
+        
+         <script src="../js/Clientes_funciones.js"></script>
+       
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
        
     </body>
