@@ -16,15 +16,6 @@ public class Cliente {
     public Cliente() {
         this.ventasRealizadas = new ArrayList<>();
     }
-    
-    public Cliente(String duiCliente, String nombreCliente, String apellidoCliente, String direccionCliente, String telefonoCliente, boolean estadoCliente) {
-        this.duiCliente = duiCliente;
-        this.nombreCliente = nombreCliente;
-        this.apellidoCliente = apellidoCliente;
-        this.direccionCliente = direccionCliente;
-        this.telefonoCliente = telefonoCliente;
-        this.estadoCliente = estadoCliente;
-    }
 
     public Cliente(String duiCliente, String nombreCliente, String apellidoCliente, String direccionCliente, String telefonoCliente, ArrayList<Ventas> ventasRealizadas) {
         this.duiCliente = duiCliente;
@@ -32,6 +23,16 @@ public class Cliente {
         this.apellidoCliente = apellidoCliente;
         this.direccionCliente = direccionCliente;
         this.telefonoCliente = telefonoCliente;
+        this.ventasRealizadas = ventasRealizadas;
+    }
+
+    public Cliente(String duiCliente, String nombreCliente, String apellidoCliente, String direccionCliente, String telefonoCliente, boolean estadoCliente, ArrayList<Ventas> ventasRealizadas) {
+        this.duiCliente = duiCliente;
+        this.nombreCliente = nombreCliente;
+        this.apellidoCliente = apellidoCliente;
+        this.direccionCliente = direccionCliente;
+        this.telefonoCliente = telefonoCliente;
+        this.estadoCliente = estadoCliente;
         this.ventasRealizadas = ventasRealizadas;
     }
 
@@ -89,11 +90,6 @@ public class Cliente {
 
     public void setVentasRealizadas(ArrayList<Ventas> ventasRealizadas) {
         this.ventasRealizadas = ventasRealizadas;
-    }
-
-    @Override
-    public String toString() {
-        return "Cliente{" + "duiCliente=" + duiCliente + ", nombreCliente=" + nombreCliente + ", apellidoCliente=" + apellidoCliente + ", direccionCliente=" + direccionCliente + ", telefonoCliente=" + telefonoCliente + ", estadoCliente=" + estadoCliente + ", ventasRealizadas=" + ventasRealizadas + '}';
     }
     
     
