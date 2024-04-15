@@ -26,6 +26,7 @@
         <script src="http://parsleyjs.org/dist/parsley.js"></script>
 
 
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
@@ -70,7 +71,11 @@
                                 <div class="col-12">
                                     <div class="card m-b-20">
                                         <div class="card-body">
-                                            <div id="aqui_tabla"></div>
+
+                                            <div id="aqui_tabla">
+
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -117,7 +122,7 @@
                                             <!-- DE MOMENTO SERA UN VALOR PREDETERMINADO POR QUE SE TOMARA AUTOMATICAMENTE
                                             DEPENDIENTO DE QUE EMPLEADO HAYA INICIADO SESION -->
                                             <input type="text" id="empleado" name="empleado" value="06143587-9" data-parsley-error-message="Campo requerido" class="form-control" required readonly>
-                                            
+
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -140,5 +145,7 @@
             </div>
         </div>
     </body>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
     <script src="../js/CrudCompras.js"></script>
 </html>
