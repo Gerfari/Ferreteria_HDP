@@ -72,38 +72,34 @@ $(function (){
    });
 });
 //CREAMOS EL METODO PARA MOSTRAR
-function cargarTabla(estado=1){
-    mostrar_cargando("procesando solicitud","Espere mientras se procesa la informacion");
-    var datos={"consultar_datos":"si_consulta","estado":estado};
-    console.log("Datos: "+datos.consultar_datos+ " Estado: "+datos.estado);
+function cargarTabla(estado = 1) {
+    mostrar_cargando("procesando solicitud", "Espere mientras se procesa la informacion");
+    var datos = { "consultar_datos": "si_consulta", "estado": estado };
+
     $.ajax({
         dataType: "json",
         method: "POST",
         url: "../ControllerCompra",
-        data:datos
-    }).done(function (json){
+        data: datos
+    }).done(function(json) {
         Swal.close();
-        console.log("datos consultados: "+json);
-        if (json[0].resultado==="exito") {
-            //LE MANDO LOS DATOS A LA TABLA CON ID aqui_tabla
+        if (json[0].resultado === "exito") {
             $("#aqui_tabla").empty().html(json[0].tabla);
-            document.querySelector("#Compras_realizadas").textContent=json[0].cuantos;
-            $("#tabla_compras").DataTable({
-               "languaje":{
-                   url:"//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-               } 
+            document.querySelector("#Compras_realizadas").textContent = json[0].cuantos;
+
+            // Inicializar DataTables después de cargar la tabla
+            $('#tabla_compras').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"
+                },
+                "searching": true // Habilitar la funcionalidad de búsqueda
             });
-        }else{
-            Swal.fire('Accion no completada','No se pudo obtener los datos','error');
+        } else {
+            Swal.fire('Accion no completada', 'No se pudo obtener los datos', 'error');
         }
-        
-        
-    }).fail(function(){
-        
-    }).always(function(){
-        
-    });
+    }).fail(function() {}).always(function() {});
 }
+
 //FUNCION PARA CARGAR EL COMBOBOX DEL PROVEEDOR
 function cargar_combo_proveedores(estado=1){
     var datos={"consultar_datos":"llenar_combo_proveedor","estado":estado};
