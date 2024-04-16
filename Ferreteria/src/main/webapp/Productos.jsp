@@ -59,5 +59,5 @@
         </div> 
     </body>
     <script type="text/javascript" src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-    <script src="../js/Producto_funciones.js"></script>
+    <script src="js/Producto_funciones.js"></script>
 </html>
