@@ -6,6 +6,7 @@ package com.ues.models.dao;
 
 import com.ues.models.Compras;
 import com.ues.models.Conexion;
+import com.ues.models.DetalleCompra;
 import com.ues.models.Proveedor;
 import com.ues.models.dtos.ComprasDTO;
 import java.sql.Connection;
@@ -34,6 +35,8 @@ public class CompraDAO {
     private static String SELECT_ALL_COMPRAS = "SELECT cp.id_compra,cp.fecha_compra, cp.dui_empleado, ep.nombre_empleado, ep.apellido_empleado, pr.nombre_proveedor FROM compras cp INNER JOIN empleados ep on cp.dui_empleado=ep.dui_empleado INNER JOIN proveedor pr on cp.id_proveedor=pr.id_proveedor";
     private static String OBTENER_PROVEEDORES="SELECT id_proveedor,nombre_proveedor from proveedor WHERE estado_proveedor=true";
     private static String INSERTAR_COMPRA="insert INTO compras(fecha_compra,dui_empleado,id_proveedor) VALUES(?,?,?);";
+    private static String ULTIMA_COMPRA="SELECT id_compra FROM compras ORDER BY id_compra DESC LIMIT 1";
+    private static String REGISTRAR_DETALLES="INSERT into detalle_compras(fecha_detalle_compra,id_compra,id_producto,cantidad,precio,existencia) VALUES(?,?,?,?,?,?)";
     
     public ArrayList<ComprasDTO> showCompras(){
         ArrayList<ComprasDTO> lsCompras = new ArrayList<>();
@@ -102,6 +105,53 @@ public class CompraDAO {
             ex.printStackTrace();
         }
         
+        return resultado;
+    }
+    
+    public int ultimaCompra(){
+        int codigoCompra=0;
+        try {
+            this.conexion=new Conexion();
+            this.accesoDB=this.conexion.getConexion();
+            this.ps=this.accesoDB.prepareStatement(ULTIMA_COMPRA);
+            this.rs=this.ps.executeQuery();
+            
+            while(this.rs.next()){
+                codigoCompra=rs.getInt("id_compra");
+            }
+            this.conexion.cerrarConexiones();
+        } catch (SQLException ex) {
+            Logger.getLogger(CompraDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return codigoCompra;
+    }
+    
+    public boolean registrarDetalle(DetalleCompra objDetalle,int idUCompra){
+        boolean resultado=false;
+        try {
+            this.conexion=new Conexion();
+            this.accesoDB=this.conexion.getConexion();
+            this.ps=this.accesoDB.prepareStatement(REGISTRAR_DETALLES);
+            //TOMO LA FECHA DE AHORA Y LA ENVIO AUTOMATICAMENTE
+            this.ps.setDate(1,new java.sql.Date(new java.util.Date().getTime()) );
+            this.ps.setInt(2, idUCompra);
+            this.ps.setInt(3, objDetalle.getProducto().getIdProducto());
+            this.ps.setInt(4, objDetalle.getCantidad());
+            this.ps.setFloat(5,objDetalle.getPrecio());
+            this.ps.setInt(6, objDetalle.getCantidad());
+            int respuesta=this.ps.executeUpdate();
+            
+            if (respuesta>0) {
+                resultado=true;
+            }else{
+                resultado=false;
+            }
+            this.conexion.cerrarConexiones();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(CompraDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return resultado;
     }
     

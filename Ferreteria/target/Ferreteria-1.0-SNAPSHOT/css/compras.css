@@ -1,0 +1,6 @@
+td.descrip {
+     white-space: nowrap;  /* Impide que el texto se ajuste a la línea siguiente */
+    overflow: hidden;     /* Oculta el texto que desborda el espacio de la celda */
+    text-overflow: ellipsis; /* Añade puntos suspensivos al final del texto visible */
+    max-width: 200px;     /* Ajusta esto según el ancho de tu celda */
+}

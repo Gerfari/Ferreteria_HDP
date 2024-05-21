@@ -131,11 +131,7 @@ function cargar_combo_proveedores(estado=1){
         
     }).always(function(){
         
-    });
-    
-    
-    
-    
+    }); 
 }
 
 function mostrar_cargando(titulo, mensaje = "") {
