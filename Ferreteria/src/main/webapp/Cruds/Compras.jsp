@@ -45,7 +45,7 @@
                                     <div class="mini-stat clearfix bg-white">
                                         <span class="mini-stat-icon bg-teal mr-0 float-right"><i class="mdi mdi-account"></i></span>
                                         <div class="mini-stat-info">
-                                            <H3 id="title">REALIZAR COMPRA DE PRODUCTOS</H3>
+                                            <H3 id="title">COMPRA PARA ABASTECER FERRETERIA</H3>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -126,7 +126,9 @@
             <div class="modal fade" id="md_registrar_compra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
+                        
                         <div class="modal-header">
+                            <h5>INFORMACION DE LA COMPRA</h5>
                             <sub>Campos marcados con * son obligatorios</sub>
                             <button type="button" class="close" data-dismiss="modal" id="cerrarmodal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -138,14 +140,7 @@
                                 <input type="hidden" id="llave_compra" name="llave_compra" value="">
                                 <input type="hidden" id="consultar_datos" name="consultar_datos" value="si_registro">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Codigo</label>
-                                            <input type="text" autocomplete="off" name="codigocompra"
-                                                   data-parsley-error-message="Campo requerido" id="codigocompra"
-                                                   class="form-control" >
-                                        </div>
-                                    </div>
+                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Fecha compra</label>
@@ -162,13 +157,29 @@
                                             <input type="text" id="empleado" name="empleado" value="06143587-9" data-parsley-error-message="Campo requerido" class="form-control" required readonly>
 
                                         </div>
-                                    </div>
+                                    </div>  
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Proveedor</label>
                                             <select id="proveedorSeleccionado" name="proveedorSeleccionado" class="form-control" required>
                                                 <option value="">Seleccione</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Productos seleccionados</label>
+                                            <input type="text" autocomplete="off" name="cant-productos"
+                                                   data-parsley-error-message="Campo requerido" id="cant-productos"
+                                                   class="form-control" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Total a pagar</label>
+                                            <input type="text" autocomplete="off" name="total-pagar"
+                                                   data-parsley-error-message="Campo requerido" id="total-pagar"
+                                                   class="form-control" >
                                         </div>
                                     </div>
                                 </div>

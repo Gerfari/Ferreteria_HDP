@@ -32,7 +32,7 @@ public class CompraDAO {
         this.conexion = new Conexion();
     }
 
-    private static String SELECT_ALL_COMPRAS = "SELECT cp.id_compra,cp.fecha_compra, cp.dui_empleado, ep.nombre_empleado, ep.apellido_empleado, pr.nombre_proveedor FROM compras cp INNER JOIN empleados ep on cp.dui_empleado=ep.dui_empleado INNER JOIN proveedor pr on cp.id_proveedor=pr.id_proveedor";
+    private static String SELECT_ALL_COMPRAS = "SELECT cp.id_compra,cp.fecha_compra, cp.dui_empleado, ep.nombre_empleado, ep.apellido_empleado, pr.nombre_proveedor FROM compras cp INNER JOIN empleados ep on cp.dui_empleado=ep.dui_empleado INNER JOIN proveedor pr on cp.id_proveedor=pr.id_proveedor order by cp.fecha_compra desc";
     private static String OBTENER_PROVEEDORES="SELECT id_proveedor,nombre_proveedor from proveedor WHERE estado_proveedor=true";
     private static String INSERTAR_COMPRA="insert INTO compras(fecha_compra,dui_empleado,id_proveedor) VALUES(?,?,?);";
     private static String ULTIMA_COMPRA="SELECT id_compra FROM compras ORDER BY id_compra DESC LIMIT 1";
