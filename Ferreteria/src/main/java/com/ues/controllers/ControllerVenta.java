@@ -9,6 +9,7 @@ import com.ues.models.dao.VentaDAO;
 import com.ues.models.dtos.VentasIntervaloFecha;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ import org.json.JSONObject;
 @WebServlet(name = "ControllerVenta", urlPatterns = {"/ControllerVenta"})
 public class ControllerVenta extends HttpServlet {
 
+    DecimalFormat formato = new DecimalFormat("0.00");
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -135,19 +137,25 @@ public class ControllerVenta extends HttpServlet {
                                 + "<thead>\n"
                                 + "<tr>\n"
                                 + "<th>NUMERO #</th>\n"
-                                + "<th>EMPLEADO </th>\n"
+                                + "<th>VENDEDOR </th>\n"
                                 + "<th>VENTAS REALIZADAS</th>\n"
+                                + "<th>MONTO RECAUDADO</th>\n"
                                 + "</tr>\n"
                                 + "</thead>\n"
-                                + "</tbody>";
+                                + "<tbody>";
                         int cont = 0;
-
+                        int totalVentas=0;
+                        double totalRecaudado=0;
                         for (VentasIntervaloFecha dto : lsVentas) {
+                            totalVentas+=dto.getTotalDeVentas();
+                            totalRecaudado+=dto.getMontoTotal();
                             cont++;
                             html += "<tr>";
                             html += "<td>" + cont + "</td>";
                             html += "<td>" + dto.getNombreEmpleado() + "</td>";
                             html += "<td>" + dto.getTotalDeVentas() + "</td>";
+                            String montoFormateado=formato.format(dto.getMontoTotal());
+                            html += "<td> $" + montoFormateado + "</td>";
                             html += "</tr>";
                         }//CIERRE DEL FOR
                         html += "</tbody>\n"
@@ -156,7 +164,8 @@ public class ControllerVenta extends HttpServlet {
                         json_ventas.put("desde", fechaInicio);
                         json_ventas.put("hasta", fechaFin);
                         json_ventas.put("tabla", html);
-                        json_ventas.put("cuantos", cont);
+                        json_ventas.put("cuantos", totalVentas);
+                        json_ventas.put("totalRecaudado",totalRecaudado);
 
                     
                 }

@@ -35,7 +35,7 @@
     <body>
         <div class="row">
             <div class="container">
-                <h2 class="text-center">LISTA DE VENTAS REALIZADAS POR VENDEDORES EN UN INTERVALO DE TIEMPO</h2>
+                <h2 class="text-center">VENTAS REALIZADAS EN UN PERIODO DE TIEMPO</h2>
                 <label class="col-sm-6 control-label text-center">Seleccione el intervalo de fechas</label>
                 <div class="col-sm-6 mx-auto">
                     <form name="formulario_datos" id="formulario_datos">
@@ -55,57 +55,50 @@
             </div>
         </div>
 
-            <!-- Start right Content here -->
-            <div class="content-page">
-                <!-- Start content -->
-                <div class="content">
-                    <!-- Top Bar Start -->
-                    <!-- Top Bar End -->
-                    <!-- ==================
-                    PAGE CONTENT START
-                    ================== -->
-                    <div class="page-content-wrapper">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-12 col-xl-12">
-                                    <div class="mini-stat clearfix bg-white">
-                                        <span class="mini-stat-icon bg-blue-grey mr-0 float-right"><i class="mdi mdi-black-mesa"></i></span>
-                                        <div class="mini-stat-info">
-                                            <span id="Cantidad_registros" class="counter text-blue-grey">0</span>
-                                            Registros encontrados
-                                        </div>
-                                        <div class="clearfix"></div>
+        <!-- Start right Content here -->
+        <div class="content-page">
+            <!-- Start content -->
+            <div class="content">
+                <!-- Top Bar Start -->
+                <!-- Top Bar End -->
+                <!-- ==================
+                PAGE CONTENT START
+                ================== -->
+                <div class="page-content-wrapper">
+                    <div class="container-fluid">
+                        <div class="row">
+
+                            <br>
+                            <div class="col-md-12 col-xl-12" id="mostrar_info" >
+                                <div class="mini-stat clearfix bg-white">
+                                    <span class="mini-stat-icon bg-teal mr-0 float-right"><i
+                                            class="mdi mdi-account"></i></span>
+                                    <div class="mini-stat-info text-center">  
+                                        <br>
+                                        <H4><span id="Cantidad_registros"></span> VENTAS REALIZADAS ENTRE <span id="fechaDesde"></span> Y <span id="fechaHasta"></span>
+                                            <br>
+                                            TOTAL RECAUDADO: $ <span id="totalRecaudado"></span>
+                                        </H4>
+
                                     </div>
+                                    <div class="clearfix"></div>
                                 </div>
-                                <br>
-                                <div class="col-md-12 col-xl-12" id="registrar_autor" style="cursor: pointer;">
-                                    <div class="mini-stat clearfix bg-white">
-                                        <span class="mini-stat-icon bg-teal mr-0 float-right"><i
-                                                class="mdi mdi-account"></i></span>
-                                        <div class="mini-stat-info text-center">                                            
-                                            <H3>CANTIDAD DE VENTAS REALIZADA EN LOS PERIODOS DE FECHAS</H3>
-                                            <label id="fechaDesde" class="counter text-blue-grey">----/--/--</label><t></t>
-                                            HASTA<t></t>
-                                            <label id="fechaHasta" class="counter text-blue-grey">----/--/--</label>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-                            </div><br>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="card m-b-20">
-                                        <div class="card-body">
-                                            <div id="aqui_tabla"></div>
-                                        </div>
+                            </div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card m-b-20">
+                                    <div class="card-body">
+                                        <div id="aqui_tabla"></div>
                                     </div>
                                 </div>
                             </div>
-                        </div><!-- container -->
-                    </div> <!-- Page content Wrapper -->
-                </div> <!-- content -->
-            </div>
+                        </div>
+                    </div><!-- container -->
+                </div> <!-- Page content Wrapper -->
+            </div> <!-- content -->
+        </div>
     </body>
-     <script type="text/javascript" src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="../js/VentasIntervaloFecha.js"></script>
 </html>

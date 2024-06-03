@@ -31,7 +31,7 @@ public class VentaDAO {
         this.conexion=new Conexion();
     }
     private static String FECHAS_DE_VENTAS="SELECT fecha_venta FROM ventas ORDER BY fecha_venta ASC";
-    private static String OBTENER_VENTAS_ENTRE_DOS_FECHAS="SELECT e.nombre_empleado, COUNT(v.id_venta) AS total_ventas FROM Empleados e INNER JOIN Ventas v ON e.dui_empleado = v.dui_empleado WHERE v.fecha_venta BETWEEN ? AND ? GROUP BY e.nombre_empleado;";
+    private static String OBTENER_VENTAS_ENTRE_DOS_FECHAS="SELECT e.nombre_empleado,e.apellido_empleado, COUNT(DISTINCT v.id_venta) AS total_ventas,SUM(dv.cantidad*dv.precio_venta) as monto FROM Empleados e INNER JOIN Ventas v ON e.dui_empleado = v.dui_empleado INNER JOIN detalle_ventas dv on dv.id_venta=v.id_venta WHERE v.fecha_venta BETWEEN ? AND ? GROUP BY e.nombre_empleado,e.apellido_empleado";
     
     
     //PARA LLENAR EL COMBOBOX
@@ -75,8 +75,9 @@ public class VentaDAO {
             
             while(this.rs.next()){
                 VentasIntervaloFecha dtoVentas = new VentasIntervaloFecha();
-                dtoVentas.setNombreEmpleado(rs.getString("nombre_empleado"));
+                dtoVentas.setNombreEmpleado(rs.getString("nombre_empleado")+" "+rs.getString("apellido_empleado"));
                 dtoVentas.setTotalDeVentas(rs.getInt("total_ventas"));
+                dtoVentas.setMontoTotal(rs.getDouble("monto"));
                 lsVentas.add(dtoVentas);
             }
             
