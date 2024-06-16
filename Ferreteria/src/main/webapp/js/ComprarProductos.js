@@ -1,8 +1,9 @@
-
+verificarSesion();
 let lsSeleccionados = [];
 let cont = 0;
 let total = 0;
 $(function () {
+
     $('#formulario_registro').parsley();
     ocultarBotonComprar();
     cargarTabla();
@@ -10,6 +11,8 @@ $(function () {
 
     //METODOS DEL MODAL
     $(document).on("click", "#realizar_compra", function (e) {
+        //TOMAMOS EL DUI DEL EMPLEADO QUE REALIZA LA COMPRA
+        let empleado = JSON.parse(localStorage.getItem('empleado'));
         //CODIGO PARA ENVIAR EL PROXIMO CODIGO PERO QUE SOLO LO MUESTRE
         //var codEnNumero=document.getElementById('Compras_realizadas').textContent;
         //CONVERTIMOS DE TEXTO A NUMERO BASE 10
@@ -17,7 +20,8 @@ $(function () {
         //PARA ENVIAR LA FECHA ACTUAL AL CALENDARIO
         var fecha = new Date();
         //FECHA CON FORMATO YYYY-MM-DD
-        var fechaFormateada = fecha.toISOString().slice(0, 10);
+        var fechaLocal = new Date(fecha.getTime() - fecha.getTimezoneOffset() * 60000);
+        var fechaFormateada = fechaLocal.toISOString().slice(0, 10);
 
         e.preventDefault();
         mostrarTotal();
@@ -27,8 +31,12 @@ $(function () {
         //PARA MOSTRA EL SIGUIENTE CODIGO A REGISTRAR
         document.querySelector('#cant-productos').value = lsSeleccionados.length;
         document.querySelector('#total-pagar').value = "$ " + total.toFixed(2);
+        document.querySelector("#empleado").value = empleado.duiEmpleado;
+        document.querySelector("#nombreEmpleado").value = empleado.nombreEmpleado + " " + empleado.apellidoEmpleado;
+
         //PARA ENVIAR LA FECHA ACTUAL AL CALENDARIO
         document.querySelector('#fechacompra').value = fechaFormateada;
+        document.getElementById('fechacompra').readOnly = true;
         document.querySelector('#cant-productos').readOnly = true;
         document.querySelector('#empleado').readOnly = true;
         document.querySelector('#total-pagar').readOnly = true;
@@ -45,7 +53,7 @@ $(function () {
             showCancelButton: true,
             confirmButtonText: "Comprar",
             denyButtonText: `No comprar`,
-            cancelButtonText:'Cancelar'
+            cancelButtonText: 'Cancelar'
         }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
@@ -197,15 +205,17 @@ $(function () {
         console.log("boton clickeado" + idBoton);
         ocultarBotonComprar();
     });
-    
+
     //METODOS PARA CERRAR MODAL
     $(document).on("click", "#cerrarmodal", function (e) {
         e.preventDefault();
+        Swal.fire('Cancelado', 'Se cancelo el registro', 'info');
         $("#md_registrar_compra").modal("hide");
     });
 
     $(document).on("click", "#btn_cerrar", function (e) {
         e.preventDefault();
+        Swal.fire('Cancelado', 'Se cancelo el registro', 'info');
         $("#md_registrar_compra").modal("hide");
     });
 });
@@ -308,5 +318,15 @@ function mostrarTotal() {
 
     }
 }
+
+function verificarSesion() {
+    let empleado = JSON.parse(localStorage.getItem('empleado'));
+    if (empleado == null) {
+        console.log("Deberia mostrar mensaje de error");
+        window.top.location.href = '../Utilidades/RestringirAcceso.jsp';
+    }
+    console.log("Paso el if de verificarSesion");
+}
+
 
 

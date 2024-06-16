@@ -36,6 +36,17 @@ public class Cliente {
         this.ventasRealizadas = ventasRealizadas;
     }
 
+    public Cliente(String duiCliente, String nombreCliente, String apellidoCliente, String direccionCliente, String telefonoCliente, boolean estadoCliente) {
+        this.duiCliente = duiCliente;
+        this.nombreCliente = nombreCliente;
+        this.apellidoCliente = apellidoCliente;
+        this.direccionCliente = direccionCliente;
+        this.telefonoCliente = telefonoCliente;
+        this.estadoCliente = estadoCliente;
+    }
+    
+    
+
     public boolean isEstadoCliente() {
         return estadoCliente;
     }

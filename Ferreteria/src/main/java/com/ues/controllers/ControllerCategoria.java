@@ -98,6 +98,7 @@ public class ControllerCategoria extends HttpServlet {
                     try {
                         CategoriasDAO daoCat = new CategoriasDAO();
                         categoriasList = daoCat.selectDisponiblesCategoria();
+                         html += "<div class='table-responsive'>"; //ASEGURA LA RESPONSIVIDAD
                         html += "<table id=\"tabla_producto\""
                                 + "class=\"table table-bordered dt-responsive nowrap\""
                                 + "cellspacing=\"0\" width=\"100%\">\n"
@@ -108,7 +109,7 @@ public class ControllerCategoria extends HttpServlet {
                                 + "<th>Cantidad de productos</th>\n"
                                 + "</tr>\n"
                                 + "</thead>\n"
-                                + "</tbody>";
+                                + "<tbody>";
                         int cont = 0;
                         for (CantidadPorCategoriaDTO dto : categoriasList) {
                             cont++;
@@ -120,6 +121,7 @@ public class ControllerCategoria extends HttpServlet {
                         }//CIERRE DEL CICLO FOR
                         html += "</tbody>\n"
                                 + "\t\t </table>";
+                        html += "</div>";  // Cierre del div table-responsive
 
                         json_productos.put("resultado", "exito");
                         json_productos.put("tabla", html);

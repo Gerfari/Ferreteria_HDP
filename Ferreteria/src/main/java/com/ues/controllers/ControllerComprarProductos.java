@@ -108,8 +108,8 @@ public class ControllerComprarProductos extends HttpServlet {
                 html += "<tr>";
                 html += "<th>#</th>";
                 html += "<th>PRODUCTO</th>";
-                html += "<th>DESCRIPCION</th>";
-                html += "<th>OPCIONES</th>";
+                html += "<th>DESCRIPCIÓN</th>";
+                html += "<th>OPCIÓN</th>";
                 html += "</tr>";
                 html += "</thead>";
                 html += "<tbody>";  // Apertura correcta de tbody

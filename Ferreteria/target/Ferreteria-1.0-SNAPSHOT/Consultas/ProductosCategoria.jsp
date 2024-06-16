@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Productos por categoría</title>
         <!-- Inicio para que funcione class='dropdown m-b-10' -->
         <!-- Inicio para que funcione class='dropdown m-b-10' -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -62,7 +62,7 @@
                                     <span class="mini-stat-icon bg-blue-grey mr-0 float-right"><i class="mdi mdi-black-mesa"></i></span>
                                     <div class="mini-stat-info">
                                         <span id="Cantidad_productos" class="counter text-blue-grey">0</span>
-                                        Productos registrados
+                                        Categorias encontradas
                                     </div>
                                 </div>
                             </div>

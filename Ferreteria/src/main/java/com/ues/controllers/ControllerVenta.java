@@ -131,6 +131,7 @@ public class ControllerVenta extends HttpServlet {
                         lsVentas = daoVenta.ventasEntreFechas(fechaInicio, fechaFin);
 
                         //CREO EL CONTENIDO DEL HTML
+                        html += "<div class='table-responsive'>"; //ASEGURA LA RESPONSIVIDAD
                         html += "<table id=\"tabla_registros\""
                                 + "class=\"table table-bordered dt-responsive nowrap\""
                                 + "cellspacing=\"0\" width=\"100%\">\n"
@@ -138,8 +139,8 @@ public class ControllerVenta extends HttpServlet {
                                 + "<tr>\n"
                                 + "<th>NUMERO #</th>\n"
                                 + "<th>VENDEDOR </th>\n"
-                                + "<th>VENTAS REALIZADAS</th>\n"
-                                + "<th>MONTO RECAUDADO</th>\n"
+                                + "<th>CANTIDAD DE <br>VENTAS REALIZADAS</th>\n"
+                                + "<th>TOTAL</th>\n"
                                 + "</tr>\n"
                                 + "</thead>\n"
                                 + "<tbody>";
@@ -160,6 +161,7 @@ public class ControllerVenta extends HttpServlet {
                         }//CIERRE DEL FOR
                         html += "</tbody>\n"
                                 + "\t\t </table>";
+                        html += "</div>";  // Cierre del div table-responsive
                         json_ventas.put("resultado", "exito");
                         json_ventas.put("desde", fechaInicio);
                         json_ventas.put("hasta", fechaFin);

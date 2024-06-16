@@ -45,7 +45,7 @@
                                     <div class="mini-stat clearfix bg-white">
                                         <span class="mini-stat-icon bg-teal mr-0 float-right"><i class="mdi mdi-account"></i></span>
                                         <div class="mini-stat-info">
-                                            <H3 id="title">COMPRA PARA ABASTECER FERRETERIA</H3>
+                                            <H3 id="title">COMPRA PARA ABASTECER FERRETERÍA</H3>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -104,7 +104,7 @@
                                                                 <th>PRODUCTO</th>
                                                                 <th>CANTIDAD</th>
                                                                 <th>PRECIO</th>
-                                                                <th>ACCIONES</th>
+                                                                <th>OPCIÓN</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -128,7 +128,7 @@
                     <div class="modal-content">
                         
                         <div class="modal-header">
-                            <h5>INFORMACION DE LA COMPRA</h5>
+                            <h5>INFORMACIÓN DE LA COMPRA</h5>
                             <sub>Campos marcados con * son obligatorios</sub>
                             <button type="button" class="close" data-dismiss="modal" id="cerrarmodal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -143,7 +143,7 @@
                                     
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Fecha compra</label>
+                                            <label>Fecha compra:</label>
                                             <input type="date" autocomplete="off" name="fechacompra"
                                                    data-parsley-error-message="Campo requerido" id="fechacompra"
                                                    class="form-control" required placeholder="Seleccione una fecha">
@@ -151,13 +151,13 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Empleado</label>
+                                            <label>Vendedor:</label>
                                             <!-- DE MOMENTO SERA UN VALOR PREDETERMINADO POR QUE SE TOMARA AUTOMATICAMENTE
                                             DEPENDIENTO DE QUE EMPLEADO HAYA INICIADO SESION -->
-                                            <input type="text" id="empleado" name="empleado" value="06143587-9" data-parsley-error-message="Campo requerido" class="form-control" required readonly>
-
+                                            <input type="hidden" id="empleado" name="empleado" value="" data-parsley-error-message="Campo requerido" class="form-control" required readonly>
+                                            <input type="text" id="nombreEmpleado" name="nombreEmpleado" value="" data-parsley-error-message="Campo requerido" class="form-control" required readonly>
                                         </div>
-                                    </div>  
+                                    </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Proveedor</label>
