@@ -56,8 +56,8 @@ $(document).ready(function () {
                 var row = $("<tr>");
                 row.append("<td>" + detalle.producto + "</td>");
                 row.append("<td>" + detalle.cantidad + "</td>");
-                row.append("<td>" + detalle.precio + "</td>");
-                row.append("<td>" + detalle.total + "</td>");
+                row.append("<td>" +"$ "+ detalle.precio + "</td>");
+                row.append("<td>" +"$ "+ detalle.total + "</td>");
                 cantidad=cantidad+detalle.cantidad;
                 total=total+detalle.total;
                 $("#detalleVentaTableBody").append(row);
@@ -65,7 +65,7 @@ $(document).ready(function () {
             $("#fechaRealizada").val(detalleVenta[0].fechaVenta).attr("readonly", true);
             $("#vendedor").val(detalleVenta[0].empleado).attr("readonly", true);
             $("#cliente").val(detalleVenta[0].cliente).attr("readonly", true);
-            $("#totalGastado").val(total).attr("readonly", true);
+            $("#totalGastado").val("$ "+total).attr("readonly", true);
             $("#cantidadVendido").val(cantidad).attr("readonly", true);
 
             $("#md_ver_detalle").modal('show');
