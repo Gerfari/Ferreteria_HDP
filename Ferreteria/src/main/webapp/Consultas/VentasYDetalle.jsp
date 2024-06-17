@@ -123,7 +123,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody id="detalleVentaTableBody">
-                                                            <!-- Aquí se insertarán dinámicamente las filas de la tabla con JavaScript -->
+                                                           
                                                         </tbody>
                                                     </table>
                                                 </div>
