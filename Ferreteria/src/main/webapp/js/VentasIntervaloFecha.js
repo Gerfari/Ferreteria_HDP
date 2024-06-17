@@ -1,7 +1,8 @@
+verificarSesion();
 $(function () {
 
     //console.log("Entro al javascript");
-
+    document.getElementById('mostrar_info').style.visibility='hidden';
 
     $(document).on("submit", "#formulario_datos", function (e) {
         e.preventDefault();
@@ -24,8 +25,10 @@ $(function () {
                 if (json[0].resultado === "exito") {
                     //FALTA CREAR ESTA TABLA
                     $("#aqui_tabla").empty().html(json[0].tabla);
-
+                    document.getElementById('mostrar_info').style.visibility='visible';
                     document.querySelector("#Cantidad_registros").textContent = json[0].cuantos;
+                    let totalRecaudado=json[0].totalRecaudado;
+                    document.querySelector("#totalRecaudado").textContent=totalRecaudado.toFixed(2);;
                     document.querySelector("#fechaDesde").textContent=json[0].desde;
                     document.querySelector("#fechaHasta").textContent=json[0].hasta;
                     $("#tabla_registros").DataTable({
@@ -106,6 +109,16 @@ function validarFechas() {
         return true;
     }
 }
-
+function verificarSesion(){
+    let empleado=JSON.parse(localStorage.getItem('empleado'));
+    if(empleado==null){
+        console.log("Deberia mostrar mensaje de error");
+        window.top.location.href='../Utilidades/RestringirAcceso.jsp';
+        
+         
+    }
+    console.log("Paso el if de verificarSesion");
+        
+}
 
 

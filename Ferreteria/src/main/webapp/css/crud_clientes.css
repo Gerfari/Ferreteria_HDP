@@ -1,0 +1,12 @@
+      #formulario {
+    position: fixed;
+    top: 50%; /* Ajusta la posición vertical según necesites */
+    left: 50%; /* Ajusta la posición horizontal según necesites */
+    transform: translate(-50%, -50%);
+    z-index: 9999; /* Asegura que esté por encima de otros elementos */
+    background-color: white; /* Puedes cambiar el color de fondo según tu diseño */
+    padding: 20px; /* Añade un poco de espacio interno al formulario */
+    border: 1px solid #ccc; /* Agrega un borde para resaltar el formulario */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Agrega una sombra suave */
+    display: block; /* Asegura que el div esté visible */
+}

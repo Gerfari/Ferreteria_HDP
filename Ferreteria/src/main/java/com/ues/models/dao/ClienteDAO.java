@@ -12,7 +12,7 @@ public class ClienteDAO {
         try {
            
             Class.forName("org.postgresql.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ferreteria", "postgres", "root");
+            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Ferreteria_HDP", "postgres", "root");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -34,7 +34,6 @@ public class ClienteDAO {
         }
     }
 
-    // Método para actualizar un cliente existente
   // Método para actualizar un cliente existente
 public void updateCliente(Cliente cliente) {
     try {

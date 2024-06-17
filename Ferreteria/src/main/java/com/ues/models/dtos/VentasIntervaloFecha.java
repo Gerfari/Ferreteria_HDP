@@ -11,14 +11,18 @@ package com.ues.models.dtos;
 public class VentasIntervaloFecha {
     private String nombreEmpleado;
     private int totalDeVentas;
+    private double montoTotal;
     
     public VentasIntervaloFecha(){
         
     }
-    public VentasIntervaloFecha(String nombreEmpleado,int totalDeVentas){
-        this.nombreEmpleado=nombreEmpleado;
-        this.totalDeVentas=totalDeVentas;
+
+    public VentasIntervaloFecha(String nombreEmpleado, int totalDeVentas, double montoTotal) {
+        this.nombreEmpleado = nombreEmpleado;
+        this.totalDeVentas = totalDeVentas;
+        this.montoTotal = montoTotal;
     }
+    
 
     public String getNombreEmpleado() {
         return nombreEmpleado;
@@ -34,6 +38,14 @@ public class VentasIntervaloFecha {
 
     public void setTotalDeVentas(int totalDeVentas) {
         this.totalDeVentas = totalDeVentas;
+    }
+
+    public double getMontoTotal() {
+        return montoTotal;
+    }
+
+    public void setMontoTotal(double montoTotal) {
+        this.montoTotal = montoTotal;
     }
     
     

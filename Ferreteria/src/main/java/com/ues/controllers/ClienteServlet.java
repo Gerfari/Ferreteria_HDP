@@ -56,7 +56,8 @@ public class ClienteServlet extends HttpServlet {
         boolean estadoCliente = Boolean.parseBoolean(request.getParameter("estadoCliente"));
         Cliente cliente = new Cliente(duiCliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, estadoCliente);
         clienteDAO.addCliente(cliente);
-    }
+        
+       }
 
     private void editCliente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String duiCliente = request.getParameter("duiCliente");

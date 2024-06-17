@@ -1,4 +1,3 @@
-
 package com.ues.models;
 
 import java.util.ArrayList;
@@ -14,7 +13,9 @@ public class Empleados {
     private String telefonoEmpleado;
     private char genero;
     private boolean estadoEmpleado;
-    private Roles rol; //rol empleado
+    private Roles rol; 
+    private String correo;
+    private String contraseña;
     private ArrayList<Compras> comprasRealizadas;
     private ArrayList<Ventas> ventasRealizadas;
 
@@ -23,20 +24,7 @@ public class Empleados {
         this.ventasRealizadas = new ArrayList<>();
     }
 
-    public Empleados(String duiEmpleado, String nombreEmpleado, String apellidoEmpleado, Date fechaNacimiento, String direccionEmpleado, String telefonoEmpleado, char genero, Roles rol, ArrayList<Compras> comprasRealizadas, ArrayList<Ventas> ventasRealizadas) {
-        this.duiEmpleado = duiEmpleado;
-        this.nombreEmpleado = nombreEmpleado;
-        this.apellidoEmpleado = apellidoEmpleado;
-        this.fechaNacimiento = fechaNacimiento;
-        this.direccionEmpleado = direccionEmpleado;
-        this.telefonoEmpleado = telefonoEmpleado;
-        this.genero = genero;
-        this.rol = rol;
-        this.comprasRealizadas = comprasRealizadas;
-        this.ventasRealizadas = ventasRealizadas;
-    }
-
-    public Empleados(String duiEmpleado, String nombreEmpleado, String apellidoEmpleado, Date fechaNacimiento, String direccionEmpleado, String telefonoEmpleado, char genero, boolean estadoEmpleado, Roles rol, ArrayList<Compras> comprasRealizadas, ArrayList<Ventas> ventasRealizadas) {
+    public Empleados(String duiEmpleado, String nombreEmpleado, String apellidoEmpleado, Date fechaNacimiento, String direccionEmpleado, String telefonoEmpleado, char genero, boolean estadoEmpleado, Roles rol, String correo, String contraseña, ArrayList<Compras> comprasRealizadas, ArrayList<Ventas> ventasRealizadas) {
         this.duiEmpleado = duiEmpleado;
         this.nombreEmpleado = nombreEmpleado;
         this.apellidoEmpleado = apellidoEmpleado;
@@ -46,9 +34,42 @@ public class Empleados {
         this.genero = genero;
         this.estadoEmpleado = estadoEmpleado;
         this.rol = rol;
+        this.correo = correo;
+        this.contraseña = contraseña;
         this.comprasRealizadas = comprasRealizadas;
         this.ventasRealizadas = ventasRealizadas;
     }
+
+    public Empleados(String duiEmpleado, String nombreEmpleado, String apellidoEmpleado, Date fechaNacimiento, String direccionEmpleado, String telefonoEmpleado, char genero, boolean estadoEmpleado, Roles rol, String correo, String contraseña) {
+        this.duiEmpleado = duiEmpleado;
+        this.nombreEmpleado = nombreEmpleado;
+        this.apellidoEmpleado = apellidoEmpleado;
+        this.fechaNacimiento = fechaNacimiento;
+        this.direccionEmpleado = direccionEmpleado;
+        this.telefonoEmpleado = telefonoEmpleado;
+        this.genero = genero;
+        this.estadoEmpleado = estadoEmpleado;
+        this.rol = rol;
+        this.correo = correo;
+        this.contraseña = contraseña;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
 
     public boolean isEstadoEmpleado() {
         return estadoEmpleado;
