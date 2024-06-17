@@ -6,10 +6,7 @@ package com.ues.models.dtos;
 
 import java.util.Date;
 
-/**
- *
- * @author herna
- */
+
 public class ComprasDTO {
     private int idCompra;
     private Date fechaCompra;
