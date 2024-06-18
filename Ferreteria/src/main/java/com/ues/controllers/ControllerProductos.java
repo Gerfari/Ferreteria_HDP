@@ -131,11 +131,11 @@ public class ControllerProductos extends HttpServlet {
                             + "<thead>\n"
                             + "<tr>\n"
                             + "<th>#</th>\n"
-                            + "<th>NOMBRE</th>\n"
+                            + "<th>PRODUCTO</th>\n"
                             + "<th>DESCRIPCIÓN</th>\n"
                             + "<th>ESTADO</th>\n"
                             + "<th>CATEGORÍA</th>\n"
-                            + "<th>ACCIONES</th>\n"
+                            + "<th>OPCIÓN</th>\n"
                             + "</tr>\n"
                             + "</thead>\n"
                             + "<tbody>";

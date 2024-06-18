@@ -22,7 +22,7 @@
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    
+
     </head>
     <body class="fixed-left">
         <div id="wrapper">
@@ -31,24 +31,26 @@
                     <div class="page-content-wrapper">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-md-6 col-xl-6">
+                                <div class="col-md-12 col-xl-12" id="registrar_producto" style="cursor: pointer;">
+                                
                                     <div class="mini-stat clearfix bg-white">
                                         <span class="mini-stat-icon bg-blue-grey mr-0 float-right"><i class="mdi mdi-black-mesa"></i></span>
-                                        <div class="mini-stat-info">
-                                            <span id="Productos_registrados" class="counter text-blue-grey">0</span>
-                                            Productos Registrados
+                                        <div class="mini-stat-info">                                            
+                                            <H3 style="text-align: center">REGISTRAR PRODUCTO</H3>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </div>
+                            </div>
 
-
-                                <div class="col-md-6 col-xl-6" id="registrar_producto" style="cursor: pointer;">
+                            <div class="row">
+                                <div class="col-md-12 col-xl-12"/>
                                     <div class="mini-stat clearfix bg-white">
                                         <span class="mini-stat-icon bg-teal mr-0 float-right"><i
                                                 class="mdi mdi-account"></i></span>
-                                        <div class="mini-stat-info">                                            
-                                            <H3>Registrar Producto</H3>
+                                        <div class="mini-stat-info">
+                                            <span id="Productos_registrados" class="counter text-blue-grey">0</span>
+                                            PRODUCTOS REGISTRADOS
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -80,12 +82,12 @@
                         </div>
                         <div class="modal-body">
                             <form name="formulario_registro" id="formulario_registro">
-                                
+
                                 <input type="hidden" id="consultar_datos" name="consultar_datos" value="si_registro">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>ID*</label>
+                                            <label>ID</label>
                                             <input type="text" autocomplete="off" name="id_producto" maxlength="5"
                                                    data-parsley-error-message="Campo requerido" id="id_producto"
                                                    class="form-control"
@@ -95,7 +97,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Nombre*</label>
-                                            <input type="text" autocomplete="off" name="nombre_producto" maxlength="60"
+                                            <input type="text" autocomplete="off" name="nombre_producto" maxlength="200"
                                                    data-parsley-error-message="Campo requerido" id="nombre_producto"
                                                    class="form-control"
                                                    required placeholder="Ingrese el Nombre"/>
@@ -104,9 +106,10 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Descripción*</label>
-                                            <textarea autocomplete="off" name="descripcion" maxlength="200"
-                                                      data-parsley-error-message="Campo requerido" id="descripcion"
-                                                      class="form-control" rows="2" placeholder="Ingrese la descripción"></textarea>
+                                            <input autocomplete="off" name="descripcion" maxlength="255"
+                                                   data-parsley-error-message="Campo requerido" id="descripcion"
+                                                   class="form-control" rows="2" placeholder="Ingrese la descripción" required placeholder=""
+                                                   style="height: 50px;"/>
                                         </div>
                                     </div>
 
@@ -122,8 +125,8 @@
                                     </div>
                                     <div class="col-md-6 offset-md-6">
                                         <div class="form-group">
-                                            <label>Categoria*</label>
-                                            <select id="id_categoria" name="id_categoria" class="form-control" required>
+                                            <label>Categoría*</label>
+                                            <select id="id_categoria" data-parsley-error-message="Campo requerido" name="id_categoria" class="form-control" required placeholder="">
                                                 <option value="">Seleccione</option>
                                             </select>
                                         </div>

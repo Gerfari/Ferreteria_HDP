@@ -116,8 +116,8 @@ public class ControllerInformeComprasProductos extends HttpServlet {
                             html += "<td style='white-space: pre-wrap;'>" + dto.getProveedor() + "</td>";
                             html += "<td style='white-space: pre-wrap; text-align: center;'>" + dto.getFecha_compra() + "</td>";
                             html += "<td style='white-space: pre-wrap; text-align: center;'>" + dto.getCantidad_compra() + "</td>";
-                            html += "<td style='white-space: pre-wrap; text-align: center;'>" + "$" + dto.getPrecio_producto() + "</td>";
-                            html += "<td style='white-space: pre-wrap; text-align: center;'>" + "$" + dto.getTotal_compra() + "</td>";
+                            html += "<td style='white-space: pre-wrap; text-align: center;'>" + "$ " + dto.getPrecio_producto() + "</td>";
+                            html += "<td style='white-space: pre-wrap; text-align: center;'>" + "$ " + dto.getTotal_compra() + "</td>";
                             html += "<td style='white-space: pre-wrap; text-align: center;'>" + dto.getExistencia() + "</td>";
                             html += "</tr>";
                         }//CIERRE DEL CICLO FOR

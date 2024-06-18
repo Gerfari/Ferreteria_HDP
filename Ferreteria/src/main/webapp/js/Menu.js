@@ -1,4 +1,5 @@
 verificarSesion();
+AccesoPorRol();
 document.addEventListener('DOMContentLoaded',function(){
     console.log("Entro al menu");
     let usuario=JSON.parse(localStorage.getItem("empleado"));
@@ -36,4 +37,26 @@ function verificarSesion(){
     }
     console.log("Paso el if de verificarSesion");
         
+}
+
+function AccesoPorRol() {
+    let empleado = JSON.parse(localStorage.getItem('empleado'));
+    
+    if (empleado != null && empleado.rol.rol === "Administrador") {
+        console.log("Acceso completo para el administrador");
+    } else if (empleado != null && empleado.rol.rol === "Vendedor") {
+        console.log("Acceso limitado para el vendedor");
+        ocultarContenidoParaVendedor();
+    }
+}
+
+// Función para ocultar opciones(jsp) del menú no necesarias para el vendedor
+    function ocultarContenidoParaVendedor() {
+        // Ocultar páginas JSP específicas
+        document.querySelector('a[href="../Consultas/HistorialCompras.jsp"]').style.display = 'none'; 
+        document.querySelector('a[href="../Consultas/InformeComprasProductos.jsp"]').style.display = 'none';
+        document.querySelector('a[href="../Consultas/ProductosCategoria.jsp"]').style.display = 'none'; 
+        document.querySelector('a[href="../Consultas/ProductosDisponible.jsp"]').style.display = 'none'; 
+        document.querySelector('a[href="../Consultas/VentasEnIntervaloDeFechas.jsp"]').style.display = 'none'; 
+        document.querySelector('a[href="../Cruds/CRUD_Productos.jsp"]').style.display = 'none'; 
 }
