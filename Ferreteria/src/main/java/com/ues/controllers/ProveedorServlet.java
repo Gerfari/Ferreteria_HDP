@@ -72,7 +72,7 @@ public class ProveedorServlet extends HttpServlet {
         boolean estado = Boolean.parseBoolean(request.getParameter("estado"));
 
         if (nombre.isEmpty() || direccion.isEmpty() || telefono.isEmpty()) {
-            response.getWriter().write("error: El nombre, la dirección y el teléfono son campos obligatorios.");
+            response.getWriter().write(new JSONObject().put("message", "error: El nombre, la dirección y el teléfono son campos obligatorios.").toString());
             return;
         }
 
@@ -81,7 +81,7 @@ public class ProveedorServlet extends HttpServlet {
 
         // Verificar duplicados
         if (dao.existeNombreTelefono(nombre, telefono, 0)) {
-            response.getWriter().write("error: El nombre o el teléfono ya existen.");
+            response.getWriter().write(new JSONObject().put("message", "error: El nombre o el teléfono ya existen.").toString());
             return;
         }
 
@@ -103,7 +103,7 @@ public class ProveedorServlet extends HttpServlet {
         boolean estado = Boolean.parseBoolean(request.getParameter("estado"));
 
         if (nombre.isEmpty() || direccion.isEmpty() || telefono.isEmpty()) {
-            response.getWriter().write("error: El nombre, la dirección y el teléfono son campos obligatorios.");
+            response.getWriter().write(new JSONObject().put("message", "error: El nombre, la dirección y el teléfono son campos obligatorios.").toString());
             return;
         }
 
@@ -112,7 +112,7 @@ public class ProveedorServlet extends HttpServlet {
 
         // Verificar duplicados
         if (dao.existeNombreTelefono(nombre, telefono, id)) {
-            response.getWriter().write("error: El nombre o el teléfono ya existen.");
+            response.getWriter().write(new JSONObject().put("message", "error: El nombre o el teléfono ya existen.").toString());
             return;
         }
 
