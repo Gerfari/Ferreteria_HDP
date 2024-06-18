@@ -1,8 +1,6 @@
-
 package com.ues.models;
 
 import java.util.ArrayList;
-
 
 public class Proveedor {
     private int idProveedor;
@@ -16,12 +14,13 @@ public class Proveedor {
         this.comprasRealizadas = new ArrayList<>();
     }
 
-    public Proveedor(int idProveedor, String nombreProveedor, String direccionProveedor, String telefono, ArrayList<Compras> comprasRealizadas) {
+    public Proveedor(int idProveedor, String nombreProveedor, String direccionProveedor, String telefono, boolean estadoProveedor) {
         this.idProveedor = idProveedor;
         this.nombreProveedor = nombreProveedor;
         this.direccionProveedor = direccionProveedor;
         this.telefono = telefono;
-        this.comprasRealizadas = comprasRealizadas;
+        this.estadoProveedor = estadoProveedor;
+        this.comprasRealizadas = new ArrayList<>();
     }
 
     public Proveedor(int idProveedor, String nombreProveedor, String direccionProveedor, String telefono, boolean estadoProveedor, ArrayList<Compras> comprasRealizadas) {
@@ -33,6 +32,8 @@ public class Proveedor {
         this.comprasRealizadas = comprasRealizadas;
     }
 
+    // Getters y setters
+
     public boolean isEstadoProveedor() {
         return estadoProveedor;
     }
@@ -41,7 +42,6 @@ public class Proveedor {
         this.estadoProveedor = estadoProveedor;
     }
 
-    
     public int getIdProveedor() {
         return idProveedor;
     }
@@ -81,5 +81,4 @@ public class Proveedor {
     public void setComprasRealizadas(ArrayList<Compras> comprasRealizadas) {
         this.comprasRealizadas = comprasRealizadas;
     }
-
 }
