@@ -22,8 +22,8 @@ function cargarTablaProveedorProducto(estado = 1) {
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
                 }
-
             });
+            formatearValoresCompras();
             console.log("Paso el #tabla_provprod");
         } else {
             Swal.fire('Accion no completada', 'No se pudo obtener los datos', 'error');
@@ -35,3 +35,16 @@ function cargarTablaProveedorProducto(estado = 1) {
     });
 }
 
+function formatearValoresCompras() {
+    const ventas = document.querySelectorAll('#tabla_provprod td');
+
+    ventas.forEach(cell => {
+        let text = cell.textContent;
+        if (text.startsWith('$')) {
+            let num = parseFloat(text.replace('$', '').trim());
+            if (!isNaN(num)) {
+                cell.textContent = "$ " + num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
+        }
+    });
+}
