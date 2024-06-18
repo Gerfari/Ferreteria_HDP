@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Proveedores</title>
+    <title>GestiÃ³n de Proveedores</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
     <style>
@@ -27,14 +27,14 @@
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
-                    <th>DIRECCIÓN</th>
-                    <th>TELÉFONO</th>
+                    <th>DIRECCIÃ“N</th>
+                    <th>TELÃ‰FONO</th>
                     <th>ESTADO</th>
-                    <th>ACCIÓN</th>
+                    <th>ACCIÃ“N</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Las filas se cargarán dinámicamente con JavaScript -->
+                <!-- Las filas se cargarÃ¡n dinÃ¡micamente con JavaScript -->
             </tbody>
         </table>
     </div>
@@ -55,11 +55,11 @@
                             <input type="text" class="form-control" id="nombreProveedor" name="nombre" required>
                         </div>
                         <div class="form-group">
-                            <label for="direccionProveedor">Dirección</label>
+                            <label for="direccionProveedor">DirecciÃ³n</label>
                             <input type="text" class="form-control" id="direccionProveedor" name="direccion" required>
                         </div>
                         <div class="form-group">
-                            <label for="telefonoProveedor">Teléfono</label>
+                            <label for="telefonoProveedor">TelÃ©fono</label>
                             <input type="text" class="form-control" id="telefonoProveedor" name="telefono" required>
                         </div>
                         <div class="form-group">
