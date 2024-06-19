@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -17,16 +19,18 @@ public class EmpleadoDAO {
     private PreparedStatement ps;
     private ResultSet rs;
 
-    private static final String INSERT_EMPLEADO = "INSERT INTO empleados (dui_empleado, nombre_empleado, apellido_empleado, fecha_nacimiento, direccion_empleado, telefono_empleado, genero, estado_empleado, id_rol) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    private static final String UPDATE_EMPLEADO = "UPDATE empleados SET nombre_empleado = ?, apellido_empleado = ?, fecha_nacimiento = ?, direccion_empleado = ?, telefono_empleado = ?, genero = ?, estado_empleado = ?, id_rol = ? WHERE dui_empleado = ?";
+    private static final String INSERT_EMPLEADO = "INSERT INTO empleados (dui_empleado, nombre_empleado, apellido_empleado, fecha_nacimiento, direccion_empleado, telefono_empleado, genero, estado_empleado, id_rol, correo, contraseña) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String UPDATE_EMPLEADO = "UPDATE empleados SET nombre_empleado = ?, apellido_empleado = ?, fecha_nacimiento = ?, direccion_empleado = ?, telefono_empleado = ?, genero = ?, estado_empleado = ?, id_rol = ?, correo= ?,contraseña = ?  WHERE dui_empleado = ?";
     //private static final String DELETE_EMPLEADO = "UPDATE empleados SET estado_empleado = false WHERE dui_empleado = ?";
     private static final String DELETE_EMPLEADO = "UPDATE empleados SET estado_empleado = false WHERE dui_empleado = ?";
-    private static final String SELECT_EMPLEADO_BY_ID = "SELECT e.*, r.* FROM empleados e INNER JOIN roles r ON e.id_rol = r.id_rol WHERE e.dui_empleado = ?";
-   // private static final String SELECT_ALL_EMPLEADOS = "SELECT e.*, r.* FROM empleados e INNER JOIN roles r ON e.id_rol = r.id_rol";
-     private static final String SELECT_ALL_EMPLEADOS = "SELECT e.*, r.* FROM empleados e INNER JOIN roles r ON e.id_rol = r.id_rol WHERE e.estado_empleado = true";
-
+    private static final String SELECT_EMPLEADO_BY_ID = "SELECT e.* , r.* FROM empleados e INNER JOIN roles r ON e.id_rol = r.id_rol WHERE e.dui_empleado = ?";
+   // private static final String SELECT_ALL_EMPLEADOS = "SELECT e., r. FROM empleados e INNER JOIN roles r ON e.id_rol = r.id_rol";
+    private static final String SELECT_ALL_EMPLEADOS = "SELECT e.*, r.* FROM empleados e INNER JOIN roles r ON e.id_rol = r.id_rol ";
+//private static final String SELECT_ALL_EMPLEADOS ="SELECT * FROM empleados" ;
+private static final String SELECT_ROL = "SELECT * FROM roles";
     public EmpleadoDAO() throws SQLException, ClassNotFoundException {
         this.conexion = new Conexion();
+        this.accesoDB = this.conexion.getConexion();
     }
 
     public String insertEmpleado(Empleados empleado) {
@@ -38,20 +42,30 @@ public class EmpleadoDAO {
             this.ps.setString(1, empleado.getDuiEmpleado());
             this.ps.setString(2, empleado.getNombreEmpleado());
             this.ps.setString(3, empleado.getApellidoEmpleado());
-            this.ps.setDate(4, new java.sql.Date(empleado.getFechaNacimiento().getTime()));
-            this.ps.setString(5, empleado.getDireccionEmpleado());
-            this.ps.setString(6, empleado.getTelefonoEmpleado());
-            this.ps.setString(7, String.valueOf(empleado.getGenero()));
-            this.ps.setBoolean(8, empleado.isEstadoEmpleado());
-            /*revisar a la hora de ingresar*/
-            this.ps.setInt(9, empleado.getRol().getIdRol());
 
-            int filasAfectadas = this.ps.executeUpdate();
-
-            if (filasAfectadas > 0) {
-                resultado = "exito";
+            // Verificar si la fecha de nacimiento no es nula antes de asignarla
+            if (empleado.getFechaNacimiento() == null) {
+                // Manejar el caso en el que la fecha de nacimiento es nula
+                resultado = "error_fecha_nacimiento_nula";
             } else {
-                resultado = "error_insertar_empleado";
+                this.ps.setDate(4, new java.sql.Date(empleado.getFechaNacimiento().getTime()));
+                // Continuar con la inserción del empleado
+                this.ps.setString(5, empleado.getDireccionEmpleado());
+                this.ps.setString(6, empleado.getTelefonoEmpleado());
+                this.ps.setString(7, String.valueOf(empleado.getGenero()));
+                this.ps.setBoolean(8, empleado.isEstadoEmpleado());
+                //revisar a la hora de ingresar//
+                this.ps.setInt(9, empleado.getRol().getIdRol());
+                this.ps.setString(10, empleado.getCorreo());
+                this.ps.setString(11, empleado.getContraseña());
+
+                int filasAfectadas = this.ps.executeUpdate();
+
+                if (filasAfectadas > 0) {
+                    resultado = "exito";
+                } else {
+                    resultado = "error_insertar_empleado";
+                }
             }
 
             this.conexion.cerrarConexiones();
@@ -82,10 +96,15 @@ public class EmpleadoDAO {
                 empleado.setGenero(rs.getString("genero").charAt(0));
                 empleado.setEstadoEmpleado(rs.getBoolean("estado_empleado"));
                 
+                
                 Roles rol = new Roles();
+           
                 rol.setIdRol(rs.getInt("id_rol"));
                 rol.setRol(rs.getString("rol"));
                 empleado.setRol(rol);
+                
+                empleado.setCorreo(rs.getString("correo"));
+                empleado.setContraseña(rs.getString("contraseña"));
                 
                 empleadosList.add(empleado);
             }
@@ -111,10 +130,11 @@ public class EmpleadoDAO {
             this.ps.setString(5, empleado.getTelefonoEmpleado());
             this.ps.setString(6, String.valueOf(empleado.getGenero()));
             this.ps.setBoolean(7, empleado.isEstadoEmpleado());
-            /*revisar*/
+            //revisar//
             this.ps.setInt(8, empleado.getRol().getIdRol());
-            this.ps.setString(9, duiEmpleado);
-
+            this.ps.setString(9,empleado.getCorreo() );
+            this.ps.setString(10, empleado.getContraseña());
+            this.ps.setString(11, duiEmpleado);
             int filasAfectadas = this.ps.executeUpdate();
 
             if (filasAfectadas > 0) {
@@ -156,6 +176,9 @@ public class EmpleadoDAO {
                 rol.setIdRol(rs.getInt("id_rol"));
                 rol.setRol(rs.getString("rol"));
                 empleado.setRol(rol);
+                
+                empleado.setCorreo(rs.getString("correo"));
+                empleado.setContraseña(rs.getString("contraseña"));
             }
 
             this.conexion.cerrarConexiones();
@@ -190,5 +213,28 @@ public class EmpleadoDAO {
 
     return resultado;
 }
+    
+public ArrayList<Roles> comboRoles(){
+        ArrayList<Roles> lsRoles=new ArrayList<>();
+        try {
+            this.conexion=new Conexion();
+            this.accesoDB=conexion.getConexion();
+            this.ps=accesoDB.prepareStatement(SELECT_ROL);
+            this.rs=ps.executeQuery();
+            while(rs.next()){
+                Roles obj = new Roles();
+                obj.setIdRol(rs.getInt("id_rol"));
+                obj.setRol(rs.getString("rol"));
+                lsRoles.add(obj);
+            }
+            this.conexion.cerrarConexiones();
+            
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return lsRoles;
+        
+    }    
  
 }
