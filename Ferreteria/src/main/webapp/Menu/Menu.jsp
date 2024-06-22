@@ -98,7 +98,7 @@
                                     <a class="nav-link" href="../Consultas/ProductosCategoria.jsp" target="myFrame">Productos Categoria</a>
                                     <a class="nav-link" href="../Consultas/ProductosDisponible.jsp" target="myFrame">Productos Disponible </a>
                                     <a class="nav-link" href="../Consultas/VentasEnIntervaloDeFechas.jsp" target="myFrame">Ventas Entre Fechas</a>
-                                    <a class="nav-link" href="" target="myFrame">Consulta 9 </a>
+                                    <a class="nav-link" href="../Consultas/VentasYDetalle.jsp" target="myFrame">Ventas y Detalle de venta </a>
                                     <a class="nav-link" href="" target="myFrame">Consulta 10 </a>
                                 </nav>
                             </div>
