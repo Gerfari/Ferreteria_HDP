@@ -1,3 +1,5 @@
+verificarSesion();
+
 $(function () {
     console.log("principio");
     cargarTabla(1);
@@ -281,4 +283,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 });
+
+   function verificarSesion(){
+    let empleado = JSON.parse(localStorage.getItem('empleado'));
+    if(empleado == null) {
+        console.log("Deberia mostrar mensaje de error");
+        window.top.location.href = '../Utilidades/RestringirAcceso.jsp';
+    }
+    console.log("Paso el if de verificarSesion");
+}
 
