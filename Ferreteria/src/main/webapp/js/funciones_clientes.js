@@ -1,7 +1,13 @@
 $(document).ready(function () {
+     
+
     // Cargar clientes desde la base
     loadClientes();
     
+    
+    $('#estado_activo').prop('checked', true); 
+    $('#estado_inactivo').prop('checked', false); 
+
     $('#estado_activo').click(function () {
         $('#estado_inactivo').prop('checked', !this.checked);
     });
@@ -10,6 +16,12 @@ $(document).ready(function () {
     });
 
     $('#mantenimiento').on('click', function () {
+        $('#duiCliente').prop('readonly', false);
+        $("#formulario_cliente")[0].reset();
+        $('#formulario').toggle();
+        
+    });
+    $('#closeBtn').on('click', function () {
         $('#formulario').toggle();
     });
 
@@ -30,7 +42,7 @@ $(document).ready(function () {
     // Evitar que los campos DUI y teléfono acepten letras
     $('#duiCliente, #telefonoCliente').on('input', function () {
         var value = $(this).val();
-        var cleanedValue = value.replace(/[^0-9-]/g, ''); // Permitir solo números y guiones
+        var cleanedValue = value.replace(/[^0-9-]/g, ''); 
         $(this).val(cleanedValue);
     });
 
@@ -41,14 +53,13 @@ $(document).ready(function () {
         $(this).val(cleanedValue);
     });
 
-    // Aplicar máscaras de entrada a DUI y teléfono
     Inputmask("99999999-9", {
         placeholder: "00000000-0",
         clearIncomplete: true,
         clearMaskOnLostFocus: false
     }).mask('#duiCliente');
 
-     Inputmask("9999-9999", {
+    Inputmask("9999-9999", {
         placeholder: "0000-0000",
         clearIncomplete: true,
         clearMaskOnLostFocus: false
@@ -62,9 +73,7 @@ $(document).ready(function () {
             success: function (clientes) {
                 console.log("Clientes recibidos:", clientes);
                 
-                if ($.fn.DataTable.isDataTable('#tabla')) {
-                    $('#tabla').DataTable().destroy();
-                }
+                
                 
                 $("#clienteList").empty();
                 $("#CuantosClientes").text(clientes.length);
@@ -77,7 +86,6 @@ $(document).ready(function () {
                     row.append("<td class='row-data text-center'>" + cliente.telefonoCliente + "</td>");
                     row.append("<td class='row-data text-center'>" + (cliente.estadoCliente ? "Activo" : "Inactivo") + "</td>");
 
-                   
                     var editBtn = $("<button class='btn btn-primary'>").text("MODIFICAR").click(function () {
                         editForm(cliente.duiCliente, cliente.nombreCliente,
                                 cliente.apellidoCliente,
@@ -108,6 +116,7 @@ $(document).ready(function () {
             $("#estado_inactivo").prop('checked', false);
             loadClientes();
             $("#formulario").hide();
+            
         });
     }
     
@@ -122,6 +131,7 @@ $(document).ready(function () {
             $("#submitBtn").text("GUARDAR");
             loadClientes();
             $("#formulario").hide();
+            
         });
     }
 
@@ -149,18 +159,23 @@ $(document).ready(function () {
         var estadoCliente = $('#estado_activo').is(':checked') ? true : false;
         $('#estadoCliente').val(estadoCliente);
     }
-     function validateForm() {
+
+    function validateForm() {
         var nombre = $("#nombreCliente").val().trim();
         var apellido = $("#apellidoCliente").val().trim();
         var direccion = $("#direccionCliente").val().trim();
         var telefono = $("#telefonoCliente").val().trim();
+        var dui = $("#duiCliente").val().trim();
 
-        if (nombre === '' || apellido === '' || direccion === '' || telefono === '') {
-           // alert("Por favor, complete todos los campos obligatorios.");
-            Swal.fire('Cancelado', 'Se canceló el registro', 'info');
+        if (nombre === '' || apellido === '' || direccion === '' || telefono === '' || dui === '') {
+            Swal.fire('Error', 'Todos los campos deben estar completos', 'error');
             return false;
+        } else {
+            Swal.fire('Éxito', 'Formulario enviado correctamente', 'success');
         }
 
         return true;
     }
+
+    
 });

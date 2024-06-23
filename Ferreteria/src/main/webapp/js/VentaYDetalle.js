@@ -65,10 +65,15 @@ $(document).ready(function () {
             $("#fechaRealizada").val(detalleVenta[0].fechaVenta).attr("readonly", true);
             $("#vendedor").val(detalleVenta[0].empleado).attr("readonly", true);
             $("#cliente").val(detalleVenta[0].cliente).attr("readonly", true);
-            $("#totalGastado").val("$ "+total).attr("readonly", true);
+
+// Formatear el total
+            var formattedTotal = total >= 1000 ? total.toLocaleString() : total;
+            $("#totalGastado").val("$ " + formattedTotal).attr("readonly", true);
+
             $("#cantidadVendido").val(cantidad).attr("readonly", true);
 
             $("#md_ver_detalle").modal('show');
+
         },
         error: function (xhr, status, error) {
             console.error("Error al obtener los detalles de la venta:", error);

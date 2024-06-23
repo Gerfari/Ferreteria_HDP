@@ -48,7 +48,7 @@
                                                         <th>DIRECCIÓN</th>
                                                         <th>TELÉFONO</th>
                                                         <th>ESTADO</th>
-                                                        <th>ACCIONES</th>
+                                                        <th>OPCIÓN</th>
 
 
                                                     </tr>
@@ -121,6 +121,7 @@
                     <input type="hidden" id="estadoCliente" name="estadoCliente">
                 </div>
                 <button id="submitBtn" type="submit" class="btn btn-primary">GUARDAR</button>
+                <button  id="closeBtn" type="button" class="btn btn-secondary">CERRAR</button>
             </form>
 
         </div>

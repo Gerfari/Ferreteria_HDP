@@ -78,8 +78,8 @@
                             <div class="collapse" id="collapseLayoutsDependientes" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="../Cruds/CRUD_Productos.jsp" target="myFrame">Productos</a>
-                                    <a class="nav-link" href="../Cruds/Compras.jsp" target="myFrame">Compras</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">CRUD 3</a>
+                                    <a class="nav-link" href="../Cruds/Compras.jsp" target="myFrame">Realizar compras</a>
+                                    <a class="nav-link" href="../Cruds/Ventas.jsp" target="myFrame">Realizar ventas</a>
                                 </nav>
                             </div>
                             <div class="sb-sidenav-menu-heading">Consultas</div>
@@ -98,7 +98,7 @@
                                     <a class="nav-link" href="../Consultas/ProductosCategoria.jsp" target="myFrame">Productos Categoria</a>
                                     <a class="nav-link" href="../Consultas/ProductosDisponible.jsp" target="myFrame">Productos Disponible </a>
                                     <a class="nav-link" href="../Consultas/VentasEnIntervaloDeFechas.jsp" target="myFrame">Ventas Entre Fechas</a>
-                                    <a class="nav-link" href="" target="myFrame">Consulta 9 </a>
+                                    <a class="nav-link" href="../Consultas/VentasYDetalle.jsp" target="myFrame">Ventas y Detalle de venta </a>
                                     <a class="nav-link" href="" target="myFrame">Consulta 10 </a>
                                 </nav>
                             </div>

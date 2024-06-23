@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+ 
     loadReporte();
 
     $('#btnBuscar').click(function () {
@@ -25,7 +25,7 @@ $(document).ready(function () {
                     row.append("<td class='row-data text-center'>" + venta.nombreEmpleado + "</td>");
                     row.append("<td class='row-data text-center'>" + venta.producto + "</td>");
                     row.append("<td class='row-data text-center'>" + venta.cantidad + "</td>");
-                    row.append("<td class='row-data text-center'>" + "$ " + venta.precio + "</td>");
+                    row.append("<td class='row-data text-center'>" + "$ " + (venta.precio >= 1000 ? venta.precio.toLocaleString() : venta.precio) + "</td>");
                     row.append("<td class='row-data text-center'>" + "$ " + venta.monto + "</td>");
                     
 
