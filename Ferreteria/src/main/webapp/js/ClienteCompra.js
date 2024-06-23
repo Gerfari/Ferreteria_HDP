@@ -10,8 +10,8 @@ $(document).ready(function () {
         var dui = $("#buscarDUI").val().trim();
         
         if (dui === '') {
-            Swal.fire('Error', 'Primero hay que introducir un DUI', 'error');
-            return; // Exit the function if DUI is empty
+            Swal.fire('Error', 'SE DEBE INGRESAR UN NUMERO DE DUI', 'error');
+            return; 
         }
 
         $.ajax({
@@ -30,7 +30,8 @@ $(document).ready(function () {
                     row.append("<td class='row-data text-center'>" + cliente.nombreEmpleado + "</td>");
                     row.append("<td class='row-data text-center'>" + cliente.producto + "</td>");
                     row.append("<td class='row-data text-center'>" + cliente.fecha + "</td>");
-                    row.append("<td class='row-data text-center'>" + "$ " + cliente.precio + "</td>");
+                    var precioComas = cliente.precio >= 1000 ? cliente.precio.toLocaleString() : cliente.precio;
+                    row.append("<td class='row-data text-center'>$ " + precioComas + "</td>");
                     $("#clientesList").append(row);
                 });
                 $("#Cuantos").text(nombre);

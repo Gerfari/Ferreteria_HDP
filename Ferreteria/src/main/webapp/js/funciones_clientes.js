@@ -1,6 +1,9 @@
 $(document).ready(function () {
+     
+
     // Cargar clientes desde la base
     loadClientes();
+    
     
     $('#estado_activo').prop('checked', true); 
     $('#estado_inactivo').prop('checked', false); 
@@ -70,9 +73,7 @@ $(document).ready(function () {
             success: function (clientes) {
                 console.log("Clientes recibidos:", clientes);
                 
-                if ($.fn.DataTable.isDataTable('#tabla')) {
-                    $('#tabla').DataTable().destroy();
-                }
+                
                 
                 $("#clienteList").empty();
                 $("#CuantosClientes").text(clientes.length);
@@ -115,7 +116,7 @@ $(document).ready(function () {
             $("#estado_inactivo").prop('checked', false);
             loadClientes();
             $("#formulario").hide();
-            clearCacheAndReload();
+            
         });
     }
     
@@ -130,7 +131,7 @@ $(document).ready(function () {
             $("#submitBtn").text("GUARDAR");
             loadClientes();
             $("#formulario").hide();
-            clearCacheAndReload();
+            
         });
     }
 
@@ -176,7 +177,5 @@ $(document).ready(function () {
         return true;
     }
 
-    function clearCacheAndReload() {
-        location.reload(true);
-    }
+    
 });
