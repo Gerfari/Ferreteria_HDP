@@ -15,7 +15,7 @@
         <div class="background"></div>
         <div class="container">
             <div class="item">
-                <h2 class="logo"><i class='bx bxs-building'></i>FERRETERIA HDP175</h2>
+                <h2 class="logo"><i class='bx bxs-building'></i>FERRETERIA EL MARTILLAZO.</h2>
                 <div class="text-item">
                     <h2>¡Bienvenido! <br><span>
                             Estamos encantados de tenerte de nuevo.

@@ -47,11 +47,12 @@
                                         <thead>
                                             <tr>
                                                
-                                                <th>Vendedor que Atendio</th>
-                                                <th>Producto Comprado</th>
-                                                 <th>Fecha Compra</th>
-                                                <th>Precio</th>
-                                               
+                                                <th>VENDEDOR QUE ATENDIÓ</th>
+                                                <th>PRODUCTO COMPRADO</th>
+                                                <th>FECHA DE COMPRA</th>
+                                                <th>PRECIO</th>
+
+
                                             </tr>
                                         </thead>
                                         <tbody id="clientesList"></tbody>

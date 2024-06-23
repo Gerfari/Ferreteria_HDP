@@ -48,7 +48,7 @@
                                                         <th>DIRECCIÓN</th>
                                                         <th>TELÉFONO</th>
                                                         <th>ESTADO</th>
-                                                        <th>ACCIONES</th>
+                                                        <th>OPCIÓN</th>
 
 
                                                     </tr>

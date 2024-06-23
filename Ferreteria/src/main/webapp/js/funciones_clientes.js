@@ -13,7 +13,10 @@ $(document).ready(function () {
     });
 
     $('#mantenimiento').on('click', function () {
+        $('#duiCliente').prop('readonly', false);
+        $("#formulario_cliente")[0].reset();
         $('#formulario').toggle();
+        
     });
     $('#closeBtn').on('click', function () {
         $('#formulario').toggle();

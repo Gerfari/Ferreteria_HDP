@@ -34,7 +34,7 @@ public class VentaYDetalleDAO {
                 + "INNER JOIN empleados emp ON emp.dui_empleado = v.dui_empleado "
                 + "INNER JOIN clientes cli ON cli.dui_cliente = v.dui_cliente "
                 + "GROUP BY v.id_venta, v.fecha_venta, emp.nombre_empleado, emp.apellido_empleado, cli.nombre_cliente, cli.apellido_cliente "
-                + "ORDER BY v.id_venta ASC";
+                + "ORDER BY v.id_venta DESC";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
