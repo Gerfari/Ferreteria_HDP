@@ -36,7 +36,7 @@
                                         </H2>
                                         <span id="Lista_Prov_Prod" class="counter text-blue-grey">0</span>
                                         REGISTROS
-                                        <a href="../Cruds/" class="btn btn-primary" style="float: right;">COMPRAR PRODUCTOS</a>
+                                        <a href="../Cruds/Compras.jsp" class="btn btn-primary" style="float: right;">COMPRAR PRODUCTOS</a>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>

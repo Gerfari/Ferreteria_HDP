@@ -15,6 +15,7 @@ com\ues\models\dtos\VentasIntervaloFecha.class
 com\ues\models\dtos\ClientesCompras.class
 com\ues\models\Roles.class
 com\ues\models\Proveedor.class
+com\ues\models\dtos\DetalleProductoDTO.class
 com\ues\controllers\ControllerListProvProd.class
 com\ues\models\Categorias.class
 com\ues\models\dtos\DetalleVentaDTO.class
@@ -48,6 +49,7 @@ com\ues\controllers\ControllerComprarProductos.class
 com\ues\controllers\ClienteCompraServlet.class
 com\ues\models\dao\proveedorDemandadoDAO.class
 com\ues\models\dtos\proveedorDemandadoDTO.class
+com\ues\controllers\ControllerVenta$1.class
 com\ues\models\dtos\ReporteVentas.class
 com\ues\controllers\ControllerProveedorDemandado.class
 com\ues\models\dao\VentaDAO.class
