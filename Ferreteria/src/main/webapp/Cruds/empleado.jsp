@@ -48,7 +48,7 @@
                                     <div class="mini-stat clearfix bg-white">
                                         <span class="mini-stat-icon bg-teal mr-0 float-right"><i class="mdi mdi-account"></i></span>
                                         <div class="mini-stat-info">
-                                            <H3>Registrar Empleado</H3>
+                                            <H3>REGISTRAR EMPLEADO</H3>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -89,7 +89,7 @@
                                             <label>DUI*</label>
                                             <input type="text" autocomplete="off" name="duiEmpleado"
                                                    data-parsley-error-message="Campo requerido y no ingresar letras"  id="duiEmpleado"
-                                                   class="form-control" pattern="[0123456789-]+" maxlength="10"  >
+                                                   class="form-control" pattern="[0123456789-]+" maxlength="10" required placeholder="Ingrese número de DUI" >
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -97,7 +97,7 @@
                                             <label>Nombre*</label>
                                             <input type="text" autocomplete="off" name="nombre"
                                                    data-parsley-error-message="Campo requerido y no ingresar números" id="nombre"
-                                                   class="form-control"pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" >
+                                                   class="form-control" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" required placeholder="Ingresar Nombre" >
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -106,7 +106,7 @@
 
                                             <input type="text" autocomplete="off" name="apellido"
                                                    data-parsley-error-message="Campo requerido y no ingresar números" id="apellido"
-                                                   class="form-control" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" >
+                                                   class="form-control" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" required placeholder="Ingresar Apellido">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -123,7 +123,7 @@
 
                                             <input type="text" autocomplete="off" name="direccion"
                                                    data-parsley-error-message="Campo requerido" id="direccion"
-                                                   class="form-control" >
+                                                   class="form-control" required placeholder="Ingresar Dirección" >
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -132,24 +132,26 @@
 
                                             <input type="text" autocomplete="off" name="telefono"
                                                    data-parsley-error-message="Campo requerido y no ingresar letras" id="telefono"
-                                                   class="form-control" pattern="[0123456789]+" maxlength="8" >
+                                                   class="form-control" pattern="[0123456789]+" maxlength="8" required placeholder="Ingresar número de teléfono" >
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Sexo*</label>
-                                            <select id="genero" name="genero" class="form-control" required >
+                                            <select id="genero"  data-parsley-error-message="Campo requerido" name="genero" class="form-control" required placeholder=" "  >
+                                          
                                                 <option value="">Seleccione</option>
                                                 <option value="M">Masculino</option>
                                                 <option value="F">Femenino</option>
                                             </select>
+                                            
                                         </div>
 
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Estado*</label>
-                                            <select id="estado" name="estado" class="form-control" required>
+                                            <select id="estado" data-parsley-error-message="Campo requerido" name="estado" class="form-control" required placeholder=" ">
                                                 <option value="">Seleccione</option>
                                                 <option value="true">Activo</option>
                                                 <option value="false">Inactivo</option>
@@ -160,7 +162,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Rol*</label>
-                                            <select id="idRol" name="idRol" class="form-control" required>
+                                            <select id="idRol" data-parsley-error-message="Campo requerido" name="idRol" class="form-control" required placeholder=" ">
                                                 <option value="">Seleccione</option>
 
                                             </select>
@@ -172,7 +174,7 @@
 
                                             <input type="text" autocomplete="off" name="correo"
                                                    data-parsley-error-message="Campo requerido" id="correo"
-                                                   class="form-control" >
+                                                   class="form-control" required placeholder="Ingresar correo electrónico">
                                         </div>
                                     </div>
 
@@ -182,7 +184,7 @@
 
                                             <input type="password" autocomplete="off" name="contraseña"
                                                    data-parsley-error-message="Campo requerido" id="contraseña"
-                                                   class="form-control" >
+                                                   class="form-control" required placeholder="Ingresar contraseña " >
                                         </div>
                                     </div>
                                 </div>
