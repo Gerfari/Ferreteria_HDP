@@ -28,14 +28,16 @@ public class ProductoSinMovimiento extends HttpServlet {
             JSONObject json = new JSONObject();
             json.put("resultado", "exito");
             StringBuilder tabla = new StringBuilder();
+            int contador=0;
             double totalGlobal = 0.0; // Variable para almacenar el total global
             for (Productos producto : productos) {
                 for (DetalleCompra detalle : producto.getDetallesCompra()) {
                     double total = detalle.getExistencia() * detalle.getPrecio();
                     totalGlobal += total; // Sumar al total global
+                    contador++;
                     
                     tabla.append("<tr>");
-                    tabla.append("<td>").append(producto.getIdProducto()).append("</td>");
+                    tabla.append("<td>").append(contador).append("</td>");
                     tabla.append("<td>").append(producto.getNombreProducto()).append("</td>");
                     tabla.append("<td>").append(detalle.getExistencia()).append("</td>");
                     tabla.append("<td>").append("$").append(df.format(detalle.getPrecio())).append("</td>");
