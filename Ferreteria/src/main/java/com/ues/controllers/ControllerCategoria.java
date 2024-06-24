@@ -104,9 +104,9 @@ public class ControllerCategoria extends HttpServlet {
                                 + "cellspacing=\"0\" width=\"100%\">\n"
                                 + "<thead>\n"
                                 + "<tr>\n"
-                                + "<th>Numero #</th>\n"
-                                + "<th>Categoria </th>\n"
-                                + "<th>Cantidad de productos</th>\n"
+                                + "<th>#</th>\n"
+                                + "<th>CATEGORÍA </th>\n"
+                                + "<th>CANTIDAD DE PRODUCTOS</th>\n"
                                 + "</tr>\n"
                                 + "</thead>\n"
                                 + "<tbody>";

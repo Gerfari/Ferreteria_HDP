@@ -1,9 +1,3 @@
-<%-- 
-    Document   : VentasEnIntervaloDeFechas
-    Created on : 29 mar 2024, 17:13:48
-    Author     : herna
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,7 +14,7 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <!-- Fin para que funcione class='Mensajes sweetalert2@11 -->
 
-        <script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
         <script src="http://parsleyjs.org/dist/parsley.js"></script>
 
@@ -31,29 +25,47 @@
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
+        <style>
+            .form-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .form-row .form-group {
+                flex: 1;
+                margin-right: 10px;
+            }
+            .form-row .form-group:last-child {
+                margin-right: 0;
+            }
+        </style>
     </head>
     <body>
-        <div class="row">
-            <div class="container">
-                <h2 class="text-center">VENTAS REALIZADAS EN UN PERIODO DE TIEMPO</h2>
-                <label class="col-sm-6 control-label text-center">Seleccione el intervalo de fechas</label>
-                <div class="col-sm-6 mx-auto">
-                    <form name="formulario_datos" id="formulario_datos">
-                        <input type="hidden" id="consultar_datos" name="consultar_datos" value="envio_fechas"/>
+        <div class="container">
+            <h2 class="text-center">VENTAS REALIZADAS EN UN PERIODO DE TIEMPO</h2>
+            <label class="control-label text-center">Seleccione el intervalo de fechas</label>
+            <form name="formulario_datos" id="formulario_datos" class="col-md-6 mx-auto">
+                <input type="hidden" id="consultar_datos" name="consultar_datos" value="envio_fechas"/>
+                <div class="form-row">
+                    <div class="form-group">
                         <label for="fechaInicio">Desde:</label>
                         <select id="fechaInicio" name="fechaInicio" class="form-control" required>
                             <option value="">Seleccione</option>
-                        </select><br>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="fechaFin">Hasta:</label>
                         <select id="fechaFin" name="fechaFin" class="form-control" required>
                             <option value="">Seleccione</option>
-                        </select><br>
-                        <button type="submit" class="btn btn-primary">Enviar</button>
-                    </form>
-
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary mt-4">Enviar</button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
+        
 
         <!-- Start right Content here -->
         <div class="content-page">
@@ -67,7 +79,6 @@
                 <div class="page-content-wrapper">
                     <div class="container-fluid">
                         <div class="row">
-
                             <br>
                             <div class="col-md-12 col-xl-12" id="mostrar_info" >
                                 <div class="mini-stat clearfix bg-white">
@@ -75,11 +86,10 @@
                                             class="mdi mdi-account"></i></span>
                                     <div class="mini-stat-info text-center">  
                                         <br>
-                                        <H4><span id="Cantidad_registros"></span> VENTAS REALIZADAS ENTRE <span id="fechaDesde"></span> Y <span id="fechaHasta"></span>
+                                        <h4><span id="Cantidad_registros"></span> VENTAS REALIZADAS ENTRE <span id="fechaDesde"></span> Y <span id="fechaHasta"></span>
                                             <br>
-                                            TOTAL RECAUDADO: $ <span id="totalRecaudado"></span>
-                                        </H4>
-
+                                            TOTAL DE INGRESOS: <span id="totalRecaudado"></span>
+                                        </h4>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
