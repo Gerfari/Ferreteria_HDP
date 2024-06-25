@@ -13,7 +13,7 @@
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="http://parsleyjs.org/dist/parsley.js"></script>
-        
+
     </head>
 
     <body class="sb-nav-fixed" style="background-image: url('../img/fondoferre.jpg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; height: 100vh; margin: 0;">
@@ -21,8 +21,8 @@
 
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3"><i class="fa-solid fa-hammer"></i> Ferretería<br>El Martillazo</a>
-            
+            <a class="navbar-brand ps-3">Ferretería<br>El Martillazo</a>
+
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Elimine Navbar Search-->
@@ -30,17 +30,17 @@
             <!-- Navbar-->
             <span id="nombreUsu" style="color: #ffffff"></span>
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                
+
                 <li class="nav-item dropdown">
-                    
+
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        
+
                         <!-- AQUI SE PUEDEN AGREGAR LAS DIFERENTES OPCIONES -->
                         <li><a class="dropdown-item" href="#!"></a></li>
                         <li><a class="dropdown-item" href="#!"></a></li>
-                                    <li><hr class="dropdown-divider" /></li>
-                                    <li id="cerrar_sesion"><a class="dropdown-item"  style="cursor: pointer"> <i class="fa-solid fa-right-from-bracket"></i>Cerrar Sesión</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li id="cerrar_sesion"><a class="dropdown-item"  style="cursor: pointer">Cerrar Sesión</a></li>
                     </ul>
                 </li>
             </ul>
@@ -57,59 +57,58 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Menu
                             </a>
-                            <div class="sb-sidenav-menu-heading">Mantenimientos</div>
+                            <div class="sb-sidenav-menu-heading">Acciones</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsIndependientes" aria-expanded="false" aria-controls="collapseLayoutsIndependientes">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Independientes
+                                Mantenimientos
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseLayoutsIndependientes" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="../Cruds/empleado.jsp" target="myFrame">Empleados</a>
+                                    <a class="nav-link" href="../Cruds/proveedor.jsp" target="myFrame">Proveedores</a>
+                                    <a class="nav-link" href="../Cruds/CRUD_Productos.jsp" target="myFrame">Productos</a>
                                     <a class="nav-link" href="../Cruds/CRUD_Clientes.jsp" target="myFrame">Clientes</a>
-                                    
                                 </nav>
                             </div>
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsDependientes" aria-expanded="false" aria-controls="collapseLayoutsDependientes">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Dependientes
+                                Operaciones
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseLayoutsDependientes" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="../Cruds/CRUD_Productos.jsp" target="myFrame">Productos</a>
-                                    <a class="nav-link" href="../Cruds/Compras.jsp" target="myFrame">Realizar compras</a>
-                                    <a class="nav-link" href="../Cruds/Ventas.jsp" target="myFrame">Realizar ventas</a>
+                                    <a class="nav-link" href="../Cruds/Compras.jsp" target="myFrame">Comprar Productos</a>
+                                    <a class="nav-link" href="../Cruds/Ventas.jsp" target="myFrame">Realizar Ventas</a>
                                 </nav>
                             </div>
-                            <div class="sb-sidenav-menu-heading">Consultas</div>
+
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Consultas
+                                Informes
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link" href="" target="myFrame">Consulta 1 </a>
-                                    <a class="nav-link" href="../Consultas/ReporteVentas.jsp" target="myFrame">Reporte De Ventas</a>
-                                    <a class="nav-link" href="../Consultas/HistorialCompras.jsp" target="myFrame">Compras Por Cliente</a>
-                                    <a class="nav-link" href="../Cruds/CRUD_Compras.jsp" target="myFrame">Detalles De Compras </a>
-                                    <a class="nav-link" href="../Consultas/InformeComprasProductos.jsp" target="myFrame">Abastecimiento</a>
-                                    <a class="nav-link" href="../Consultas/ProductosCategoria.jsp" target="myFrame">Productos Categoria</a>
-                                    <a class="nav-link" href="../Consultas/ProductosDisponible.jsp" target="myFrame">Productos Disponible </a>
-                                    <a class="nav-link" href="../Consultas/VentasEnIntervaloDeFechas.jsp" target="myFrame">Ventas Entre Fechas</a>
-                                    <a class="nav-link" href="../Consultas/VentasYDetalle.jsp" target="myFrame">Ventas y Detalle de venta </a>
-                                    <a class="nav-link" href="" target="myFrame">Consulta 10 </a>
+                                    <a class="nav-link" href="../Consultas/VentasYDetalle.jsp" target="myFrame">Ventas realizadas</a>
+                                    <a class="nav-link" href="../Cruds/CRUD_Compras.jsp" target="myFrame">Compras realizadas </a>
+                                    <a class="nav-link" href="../Consultas/InformeComprasProductos.jsp" target="myFrame">Informe de compras de productos</a>
+                                    <a class="nav-link" href="../Consultas/InformeVentas.jsp" target="myFrame">Informe de ventas</a>
+                                    <a class="nav-link" href="../Consultas/productos_mas_vendidos.jsp" target="myFrame">Productos más vendidos</a>
+                                    <a class="nav-link" href="../Consultas/HistorialCompras.jsp" target="myFrame">Historial de compras de clientes</a>
+                                    <a class="nav-link" href="../Consultas/ReporteVentas.jsp" target="myFrame">Reporte de ventas</a>
+                                    <a class="nav-link" href="../Consultas/VentasEnIntervaloDeFechas.jsp" target="myFrame">Ventas entre fechas</a>
+                                    <a class="nav-link" href="../Consultas/proveedorDemandado.jsp" target="myFrame">Proveedor con mejor demanda</a>
+                                    <a class="nav-link" href="../Consultas/Productos_Sin_Movimiento.jsp" target="myFrame">Productos sin ventas</a>
+                                    <a class="nav-link" href="../Consultas/ProductosCategoria.jsp" target="myFrame">Productos por categoría</a>
+
                                 </nav>
                             </div>
-                            <div class="sb-sidenav-menu-heading">Otra Opción</div>
-                            <a class="nav-link" href="charts.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Opcion 1
-                            </a>
-                            <a class="nav-link" href="tables.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Opcion 2
+                            <div class="sb-sidenav-menu-heading">Explorar</div>
+                            <a class="nav-link" href="../Utilidades/Acerca de.jsp" target="myFrame">
+                                <div class="sb-nav-link-icon"><i class="fa-sharp fa-solid fa-circle-info"></i></div>
+                                Acerca de
                             </a>
                         </div>
                     </div>
@@ -148,7 +147,7 @@
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="../js/datatables-simple-demo.js"></script>
         <script src="../js/Menu.js"></script>
-        
+
     </body>
 </html>
 

@@ -23,6 +23,7 @@ $(function () {
         //PARA QUE LOS CAMPOS NO SE PUEDAN EDITAR POR QUE SON REGISTROS QUE DEPENDEN DE QUIEN HAYA INICIADO SESION  
         //PARA MOSTRA EL SIGUIENTE CODIGO A REGISTRAR
         document.querySelector('#cant-productos').value = lsSeleccionados.length;
+        
         document.querySelector('#total-pagar').value = "$ " + total.toFixed(2);
         document.querySelector("#empleado").value = empleado.duiEmpleado;
         document.querySelector("#nombreEmpleado").value = empleado.nombreEmpleado + " " + empleado.apellidoEmpleado;
@@ -31,7 +32,7 @@ $(function () {
         document.querySelector('#fechaventa').readOnly=true;
         document.querySelector('#cant-productos').readOnly = true;
         document.querySelector('#empleado').readOnly = true;
-        document.querySelector('#total-pagar').readOnly = true;
+        formatearTotal();
         cargar_combo_clientes();
     });
 
@@ -75,10 +76,11 @@ $(function () {
                                 //CREAMOS UN OBJETO DE TIPO PRODUCTO CON EL ID PARA AGREGARLO AL ARRAY
                                 let detalleCompra = {idDetalleCompra: celdas[3].querySelector("button").id,
                                     existencia: celdas[0].querySelector("input").value};
-                                let valorConDolar = celdas[2].querySelector("input").value;
+                                let valorConDolar = celdas[2].textContent.trim();
                                 let valorSinDolar = valorConDolar.replace('$', '');
+                                let valorSinComilla=valorSinDolar.replace(',','');
                                 nvDeta = {cantidad: celdas[1].querySelector("input").value,
-                                    precioVenta: parseFloat(valorSinDolar).toFixed(2),
+                                    precioVenta: parseFloat(valorSinComilla).toFixed(2),
                                     detalleCompra: detalleCompra
                                 };
                                 detallesVentasObj.push(nvDeta);
@@ -167,12 +169,14 @@ $(function () {
                             '<th>' + json[0].nombre_producto + '</th>' +
                             '<td style="display:none;"><input type="hidden" id="existencia" name="existencia" value="' + json[0].existencia + '"></td>' +
                             '<td><input type="number" id="cantidad' + json[0].id_detalle_compra + '"  class="input-numero" min="1" max="' + json[0].existencia + '" value="1"></td>' +
-                            '<td><input type="text" id="precio' + json[0].id_detalle_compra + '"  value="$' + json[0].precio + '" readonly></td>' +
+                            '<td>$' + json[0].precio +'</td>' +
                             '<td><button class="btn btn-danger btn_eliminar" id="' + json[0].id_detalle_compra + '" value="' + json[0].id_detalle_compra + '">Eliminar</button></td>' +
                             '</tr>'
                             );
                     cont++;
+                    formatearValoresVentas("tabla_selec");
                 }
+                
                 ocultarBotonComprar();
             }
         }).fail(function () {
@@ -262,6 +266,7 @@ function cargarTabla(estado = 1) {
                 },
                 "searching": true // Habilitar la funcionalidad de búsqueda
             });
+            formatearValoresVentas("tabla_productos");
         } else {
             Swal.fire('Accion no completada', 'No se pudo obtener los datos', 'error');
         }
@@ -334,13 +339,50 @@ function mostrarTotal() {
     for (let i = 0; i < obtenerDatos.length; i++) {
         let celdas = obtenerDatos[i].querySelectorAll("td");
         if (celdas.length >= 3) {
-            let valorConDolar = celdas[2].querySelector("input").value;
+            let valorConDolar = celdas[2].textContent.trim();
+            console.log(valorConDolar);
             let valorSinDolar = valorConDolar.replace('$', '');
-                console.log(valorSinDolar);
-            total += celdas[1].querySelector("input").value * parseFloat(valorSinDolar).toFixed(2);
+            let valorSinComilla= valorSinDolar.replace(',', '');
+                console.log(valorSinComilla);
+            total += celdas[1].querySelector("input").value * parseFloat(valorSinComilla).toFixed(2);
         }
 
     }
+}
+
+function formatearValoresVentas(tabla) {
+        var tablaselec="#"+tabla+" td"
+        console.log(tabla);
+        console.log(tablaselec);
+        const ventas = document.querySelectorAll(tablaselec);
+        console.log(ventas);
+    ventas.forEach(cell => {
+        let text = cell.textContent;
+        console.log("ANTES DE BUSCAR EL DOLAR");
+        if (text.startsWith('$')) {
+            console.log("ENCONTRO EL SIGNO DE EL DOLAR");
+            let num = parseFloat(text.replace('$', '').trim());
+            if (!isNaN(num)) {
+                console.log("ES UN NUMERO");
+                cell.textContent = "$ " + num.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            }
+        }
+        
+    });
+    
+    
+  
+}
+function formatearTotal(){
+    var span = document.getElementById('total-pagar');
+        let contenido = span.value;
+        if (contenido.startsWith('$')) {
+            let totalRecaudado = parseFloat(contenido.replace('$', ''));
+            if (!isNaN(totalRecaudado)) {
+                document.getElementById('total-pagar').value = "$ " + totalRecaudado.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            }
+        }
+        document.querySelector('#total-pagar').readOnly = true;
 }
 function verificarSesion() {
     let empleado = JSON.parse(localStorage.getItem('empleado'));

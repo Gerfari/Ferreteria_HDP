@@ -148,7 +148,7 @@ public class ControllerVenta extends HttpServlet {
                                 + "cellspacing=\"0\" width=\"100%\">\n"
                                 + "<thead>\n"
                                 + "<tr>\n"
-                                + "<th>NUMERO #</th>\n"
+                                + "<th>#</th>\n"
                                 + "<th>VENDEDOR </th>\n"
                                 + "<th>CANTIDAD DE <br>VENTAS REALIZADAS</th>\n"
                                 + "<th>TOTAL</th>\n"
@@ -167,7 +167,7 @@ public class ControllerVenta extends HttpServlet {
                             html += "<td>" + dto.getNombreEmpleado() + "</td>";
                             html += "<td>" + dto.getTotalDeVentas() + "</td>";
                             String montoFormateado=formato.format(dto.getMontoTotal());
-                            html += "<td> $" + montoFormateado + "</td>";
+                            html += "<td>$" + montoFormateado + "</td>";
                             html += "</tr>";
                         }//CIERRE DEL FOR
                         html += "</tbody>\n"

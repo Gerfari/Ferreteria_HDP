@@ -26,7 +26,7 @@ public class CategoriasDAO {
     private PreparedStatement ps;
     private ResultSet rs;
     
-    private static final String DISPONIBLES_POR_CATEGORIA = "SELECT c.categoria, SUM(dc.existencia) AS cantidad_disponible FROM Categorias c INNER JOIN Productos p ON c.id_categoria = p.id_categoria INNER JOIN Detalle_Compras dc ON p.id_producto = dc.id_producto GROUP BY c.categoria";
+    private static final String DISPONIBLES_POR_CATEGORIA = "SELECT c.categoria, SUM(dc.existencia) AS cantidad_disponible FROM Categorias c INNER JOIN Productos p ON c.id_categoria = p.id_categoria INNER JOIN Detalle_Compras dc ON p.id_producto = dc.id_producto GROUP BY c.categoria order by cantidad_disponible desc";
     
     public CategoriasDAO() throws SQLException, ClassNotFoundException{
         this.conexion = new Conexion();
