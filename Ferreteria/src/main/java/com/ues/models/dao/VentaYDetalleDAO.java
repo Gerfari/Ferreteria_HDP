@@ -71,7 +71,8 @@ public class VentaYDetalleDAO {
                 + "INNER JOIN empleados emp ON emp.dui_empleado = v.dui_empleado "
                 + "INNER JOIN clientes cli ON cli.dui_cliente = v.dui_cliente "
                 + "WHERE v.id_venta = ? "
-                + "ORDER BY total DESC";
+                //+ "ORDER BY total DESC"; ordena por el mayor monto total
+                + "ORDER BY fechaVenta DESC"; //ordena por fecha de venta desde las mas reciente
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);

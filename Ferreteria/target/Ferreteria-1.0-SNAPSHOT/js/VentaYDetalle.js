@@ -1,5 +1,6 @@
 $(document).ready(function () {
     load();
+      verificarSesion();
     function load() {
         $.ajax({
             url: "../VentaYDetalleServlet",
@@ -37,6 +38,30 @@ $(document).ready(function () {
         $("#md_ver_detalle").modal("hide");
     });
    
+       function verificarSesion() {
+        try {
+           
+            console.log("Contenido de localStorage:", localStorage);
+
+            let empleado = localStorage.getItem('empleado');
+            if (empleado) {
+                empleado = JSON.parse(empleado);
+            }
+
+            
+            console.log("Objeto empleado en localStorage:", empleado);
+
+            if (!empleado) {
+                console.log("No hay un objeto empleado en el localStorage, redirigiendo.");
+                window.top.location.href = '../Utilidades/RestringirAcceso.jsp';
+            } else {
+                console.log("Verificación de sesión completada correctamente.");
+            }
+        } catch (error) {
+            console.error("Error al verificar la sesión:", error);
+            window.top.location.href = '../Utilidades/RestringirAcceso.jsp';
+        }
+    }
 });
  function verDetalle(idVenta) {
      

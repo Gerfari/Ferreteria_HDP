@@ -1,12 +1,12 @@
 $(document).ready(function () {
-     
 
+    verificarSesion();
     // Cargar clientes desde la base
     loadClientes();
-    
-    
-    $('#estado_activo').prop('checked', true); 
-    $('#estado_inactivo').prop('checked', false); 
+
+
+    $('#estado_activo').prop('checked', true);
+    $('#estado_inactivo').prop('checked', false);
 
     $('#estado_activo').click(function () {
         $('#estado_inactivo').prop('checked', !this.checked);
@@ -19,7 +19,7 @@ $(document).ready(function () {
         $('#duiCliente').prop('readonly', false);
         $("#formulario_cliente")[0].reset();
         $('#formulario').toggle();
-        
+
     });
     $('#closeBtn').on('click', function () {
         $('#formulario').toggle();
@@ -30,7 +30,7 @@ $(document).ready(function () {
         if (!validateForm()) {
             return;
         }
-        setEstadoCliente(); 
+        setEstadoCliente();
         var action = $("#action").val();
         if (action === "add") {
             addCliente();
@@ -42,14 +42,14 @@ $(document).ready(function () {
     // Evitar que los campos DUI y teléfono acepten letras
     $('#duiCliente, #telefonoCliente').on('input', function () {
         var value = $(this).val();
-        var cleanedValue = value.replace(/[^0-9-]/g, ''); 
+        var cleanedValue = value.replace(/[^0-9-]/g, '');
         $(this).val(cleanedValue);
     });
 
     // Evitar que los campos nombre y apellido acepten números
     $('#nombreCliente, #apellidoCliente').on('input', function () {
         var value = $(this).val();
-        var cleanedValue = value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚ\s]/g, ''); 
+        var cleanedValue = value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚ\s]/g, '');
         $(this).val(cleanedValue);
     });
 
@@ -72,9 +72,9 @@ $(document).ready(function () {
             dataType: "json",
             success: function (clientes) {
                 console.log("Clientes recibidos:", clientes);
-                
-                
-                
+
+
+
                 $("#clienteList").empty();
                 $("#CuantosClientes").text(clientes.length);
 
@@ -116,10 +116,10 @@ $(document).ready(function () {
             $("#estado_inactivo").prop('checked', false);
             loadClientes();
             $("#formulario").hide();
-            
+
         });
     }
-    
+
     // Editar cliente
     function editCliente() {
         var formData = $("#formulario_cliente").serialize();
@@ -131,7 +131,7 @@ $(document).ready(function () {
             $("#submitBtn").text("GUARDAR");
             loadClientes();
             $("#formulario").hide();
-            
+
         });
     }
 
@@ -176,6 +176,29 @@ $(document).ready(function () {
 
         return true;
     }
+    function verificarSesion() {
+        try {
 
-    
+            console.log("Contenido de localStorage:", localStorage);
+
+            let empleado = localStorage.getItem('empleado');
+            if (empleado) {
+                empleado = JSON.parse(empleado);
+            }
+
+
+            console.log("Objeto empleado en localStorage:", empleado);
+
+            if (!empleado) {
+                console.log("No hay un objeto empleado en el localStorage, redirigiendo.");
+                window.top.location.href = '../Utilidades/RestringirAcceso.jsp';
+            } else {
+                console.log("Verificación de sesión completada correctamente.");
+            }
+        } catch (error) {
+            console.error("Error al verificar la sesión:", error);
+            window.top.location.href = '../Utilidades/RestringirAcceso.jsp';
+        }
+    }
+
 });
