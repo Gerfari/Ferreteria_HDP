@@ -25,16 +25,17 @@ public class VentaYDetalleDAO {
 
     public ArrayList<VentaDTO> getVentas() {
         ArrayList<VentaDTO> ventas = new ArrayList<>();
-        String query = "SELECT "
-                + "v.id_venta AS idVenta, "
-                + "v.fecha_venta AS fechaVenta, "
-                + "CONCAT(emp.nombre_empleado, ' ', emp.apellido_empleado) AS empleado, "
-                + "CONCAT(cli.nombre_cliente, ' ', cli.apellido_cliente) AS cliente "
-                + "FROM ventas v "
-                + "INNER JOIN empleados emp ON emp.dui_empleado = v.dui_empleado "
-                + "INNER JOIN clientes cli ON cli.dui_cliente = v.dui_cliente "
-                + "GROUP BY v.id_venta, v.fecha_venta, emp.nombre_empleado, emp.apellido_empleado, cli.nombre_cliente, cli.apellido_cliente "
-                + "ORDER BY v.id_venta DESC";
+      String query = "SELECT "
+            + "v.id_venta AS idVenta, "
+            + "v.fecha_venta AS fechaVenta, "
+            + "CONCAT(emp.nombre_empleado, ' ', emp.apellido_empleado) AS empleado, "
+            + "CONCAT(cli.nombre_cliente, ' ', cli.apellido_cliente) AS cliente "
+            + "FROM ventas v "
+            + "INNER JOIN empleados emp ON emp.dui_empleado = v.dui_empleado "
+            + "INNER JOIN clientes cli ON cli.dui_cliente = v.dui_cliente "
+            + "GROUP BY v.id_venta, v.fecha_venta, emp.nombre_empleado, emp.apellido_empleado, cli.nombre_cliente, cli.apellido_cliente "
+            + "ORDER BY v.fecha_venta DESC, v.id_venta DESC";
+
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);

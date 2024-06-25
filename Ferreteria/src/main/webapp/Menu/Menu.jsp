@@ -21,7 +21,7 @@
 
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3">Ferretería<br>El Martillazo</a>
+            <a class="navbar-brand ps-3"><i class="fa-solid fa-hammer"></i> Ferretería<br>El Martillazo</a>
             
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
@@ -40,7 +40,7 @@
                         <li><a class="dropdown-item" href="#!"></a></li>
                         <li><a class="dropdown-item" href="#!"></a></li>
                                     <li><hr class="dropdown-divider" /></li>
-                                    <li id="cerrar_sesion"><a class="dropdown-item"  style="cursor: pointer">Cerrar Sesión</a></li>
+                                    <li id="cerrar_sesion"><a class="dropdown-item"  style="cursor: pointer"> <i class="fa-solid fa-right-from-bracket"></i>Cerrar Sesión</a></li>
                     </ul>
                 </li>
             </ul>

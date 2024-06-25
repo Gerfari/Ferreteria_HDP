@@ -56,8 +56,8 @@ $(document).ready(function () {
                 var row = $("<tr>");
                 row.append("<td>" + detalle.producto + "</td>");
                 row.append("<td>" + detalle.cantidad + "</td>");
-                row.append("<td>" +"$ "+ detalle.precio + "</td>");
-                row.append("<td>" +"$ "+ detalle.total + "</td>");
+                row.append("<td>" + "$ " + detalle.precio.toLocaleString() + "</td>");
+                row.append("<td>" + "$ " + detalle.total.toLocaleString() + "</td>");
                 cantidad=cantidad+detalle.cantidad;
                 total=total+detalle.total;
                 $("#detalleVentaTableBody").append(row);
@@ -66,7 +66,7 @@ $(document).ready(function () {
             $("#vendedor").val(detalleVenta[0].empleado).attr("readonly", true);
             $("#cliente").val(detalleVenta[0].cliente).attr("readonly", true);
 
-// Formatear el total
+            // Formatear el total
             var formattedTotal = total >= 1000 ? total.toLocaleString() : total;
             $("#totalGastado").val("$ " + formattedTotal).attr("readonly", true);
 
