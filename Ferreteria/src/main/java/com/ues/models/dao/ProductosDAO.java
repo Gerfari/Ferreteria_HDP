@@ -27,7 +27,7 @@ public class ProductosDAO {
             + "VALUES (?,?,?,?,?)";
 
     private static final String SELECT_ALL_PRODUCTOS = "SELECT pr.*, cat.categoria FROM productos as pr"
-            + " INNER JOIN categorias as cat ON pr.id_categoria = cat.id_categoria";
+            + " INNER JOIN categorias as cat ON pr.id_categoria = cat.id_categoria ORDER BY  pr.id_producto DESC";
 
     private static final String UPDATE_PRODUCTOS = "UPDATE productos SET nombre_producto= ?, descripcion= ?, estado_producto= ?, id_categoria= ? WHERE id_producto= ?";
 

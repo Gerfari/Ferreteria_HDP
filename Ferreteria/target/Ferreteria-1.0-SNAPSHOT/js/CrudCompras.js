@@ -25,7 +25,7 @@ $(function () {
                 document.querySelector('#fechaRealizada').value = json[0].listaProductos[0].fechaCompra;
                 document.querySelector('#vendedorDetalle').value = json[0].listaProductos[0].empleado;
                 document.querySelector('#provedorDetalle').value = json[0].listaProductos[0].proveedor;
-                document.getElementById('fechaRealizada').disabled = true;
+                document.getElementById('fechaRealizada').readOnly = true;
                 document.querySelector('#vendedorDetalle').readOnly = true;
                 document.querySelector('#provedorDetalle').readOnly = true;
 
@@ -45,7 +45,7 @@ $(function () {
                         document.querySelector('#cantidadComprado').value = jsonLista[0].cuantos;
                         document.querySelector('#totalGastado').value = "$" + jsonLista[0].totalCompra;
                         document.querySelector('#cantidadComprado').readOnly = true;
-                        document.querySelector('#totalGastado').readOnly = true;
+                        
                         $("#tabla_modal").empty().html(jsonLista[0].tabla);
                         // Inicializar DataTables después de cargar la tabla
                         $('#tabla_detalles').DataTable({
@@ -54,7 +54,7 @@ $(function () {
                             },
                             "searching": true // Habilitar la funcionalidad de búsqueda
                         });
-
+                        formatearValoresVentas();
 
                     } else {
                         Swal.fire('Accion no completada', 'No se pudo obtener los datos', 'error');
@@ -138,6 +138,36 @@ function mostrar_cargando(titulo, mensaje = "") {
         }
     });
 }
+
+function formatearValoresVentas() {
+        const ventas = document.querySelectorAll('#tabla_detalles td');
+
+    ventas.forEach(cell => {
+        let text = cell.textContent;
+        if (text.startsWith('$')) {
+            let num = parseFloat(text.replace('$', '').trim());
+            if (!isNaN(num)) {
+                cell.textContent = "$ " + num.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            }
+        }
+        
+    });
+    
+    
+    //AGREGO FORMATO AL TOTAL
+        var input = document.getElementById('totalGastado');
+        let contenido = input.value;
+        console.log(contenido);
+        if (contenido.startsWith('$')) {
+            let totalComprado = parseFloat(contenido.replace('$', ''));
+            console.log(totalComprado);
+            if (!isNaN(totalComprado)) {
+                document.getElementById('totalGastado').value = "$ " + totalComprado.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            }
+        }
+        document.querySelector('#totalGastado').readOnly = true;
+}
+
 function verificarSesion() {
     let empleado = JSON.parse(localStorage.getItem('empleado'));
     if (empleado == null) {

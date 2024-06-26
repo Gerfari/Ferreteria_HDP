@@ -30,7 +30,7 @@ $(function () {
         //PARA QUE LOS CAMPOS NO SE PUEDAN EDITAR POR QUE SON REGISTROS QUE DEPENDEN DE QUIEN HAYA INICIADO SESION  
         //PARA MOSTRA EL SIGUIENTE CODIGO A REGISTRAR
         document.querySelector('#cant-productos').value = lsSeleccionados.length;
-        document.querySelector('#total-pagar').value = "$ " + total.toFixed(2);
+        document.querySelector('#total-pagar').value = "$" + total.toFixed(2);
         document.querySelector("#empleado").value = empleado.duiEmpleado;
         document.querySelector("#nombreEmpleado").value = empleado.nombreEmpleado + " " + empleado.apellidoEmpleado;
 
@@ -39,9 +39,10 @@ $(function () {
         document.getElementById('fechacompra').readOnly = true;
         document.querySelector('#cant-productos').readOnly = true;
         document.querySelector('#empleado').readOnly = true;
-        document.querySelector('#total-pagar').readOnly = true;
-
+        
+        formatearValoresVentas();
         cargar_combo_proveedores();
+        
     });
 
     //METODO PARA REGISTRAR LA COMPRA
@@ -170,8 +171,8 @@ $(function () {
                     $tabla.append(
                             '<tr>' +
                             '<th>' + json[0].nombre_producto + '</th>' +
-                            '<td><input type="number" id="cantidad' + json[0].id_producto + '" min="1" value="1"></td>' +
-                            '<td><input type="number" id="precio' + json[0].id_producto + '"  value="10.01" step="1" min="0.01"></td>' +
+                            '<td><input type="number" class="input-numero" id="cantidad' + json[0].id_producto + '" min="1" value="1"></td>' +
+                            '<td><input type="number" class="input-numero" id="precio' + json[0].id_producto + '"  value="10.01" step="1" min="0.01"></td>' +
                             '<td><button class="btn btn-danger btn_eliminar" id="' + json[0].id_producto + '" value="' + json[0].id_producto + '">Eliminar</button></td>' +
                             '</tr>'
                             );
@@ -182,6 +183,31 @@ $(function () {
         }).fail(function () {
         }).always(function () {
         });
+    });
+
+    //METODO QUE VERIFICA QUE NO EXCEDA EL LIMITE NI QUE SE SELECCIONE 0 PRODUCTOS A VENDER
+    $(document).on("blur", ".input-numero", function (e) {
+        //TOMAREMOS EL INPUT ESPECIFICO QUE DESENCADENO LA ACCION, OSEA SOBRE EL CUAL SE ESTA ESCRIBIENDO
+        var valor = parseFloat($(this).val());
+        var maximo = parseFloat($(this).attr('max'));
+        var minimo = parseFloat($(this).attr('min'));
+        //PRIMERO VALIDAMOS QUE NO ACEPTE OPERACIONES EL INPUT
+        if (!/^\$?\d*\.?\d*$/.test(valor)) {
+            $(this).val(minimo);
+        }
+        //TOMAMOS EL VALOR MAXIMO
+
+        if (valor > maximo) {
+            //SI ESTAMOS EXCECIENDO MAXIMO POR TECLADO LE ASIGNAMOS EL VALOR MAXIMO QUE PODEMOS OFRECER DE PRODUCTO
+            $(this).val(maximo);
+        }
+        //SI ES NEGATIVO O CERO LE PONEMOS COMO MINIMO 1
+
+        if (valor < minimo) {
+            $(this).val(minimo);
+        }
+
+
     });
 
     $(document).on("click", ".btn_eliminar", function (e) {
@@ -317,6 +343,20 @@ function mostrarTotal() {
         }
 
     }
+}
+function formatearValoresVentas() {
+    //AGREGO FORMATO AL TOTAL
+        var input = document.getElementById('total-pagar');
+        let contenido = input.value;
+        console.log(contenido);
+        if (contenido.startsWith('$')) {
+            let totalAPagar = parseFloat(contenido.replace('$', ''));
+            console.log(totalAPagar);
+            if (!isNaN(totalAPagar)) {
+                document.getElementById('total-pagar').value = "$ " + totalAPagar.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            }
+        }
+        document.querySelector('#total-pagar').readOnly = true;
 }
 
 function verificarSesion() {
